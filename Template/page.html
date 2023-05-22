@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/github-markdown-css/2.8.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="http://impress.github.io/impress.js/css/impress-demo.css" />
+    <title>marked in html</title>
+</head>
+
+<body>
+    <div id="impress">
+        <div class="step" data-x="0" data-y="0">
+            <template type="markdown">
+                数据可视化作业
+                ====
+                *计算机2006朱胜豪 王莹昊*
+            </template>
+        </div>
+        <div class="step" data-x="1000" data-y="0">
+            <template type="markdown">
+                此项目的目的主要是为了简化`impress.js`的使用，让用户更专注写作
+                ======
+
+                - 使用`marked`为`markdown`解析
+                - 使用`highlight.js`支持代码高亮功能
+                - 使用`github-markdown-css`作为默认样式
+
+                代码示例
+                ```js
+                intelligentProcessingIndent ($template){
+                let lines = $template.innerHTML.split('\n')
+                lines.length && /^\s*$/.test(lines[0]) && lines.shift()
+                lines.length && /^\s*$/.test(lines[lines.length-1]) && lines.pop()
+                let minSpaceSize = Math.min(...lines.map(line => line.length ? line.match(/^\s*/)[0].length : Infinity))
+                return lines.map(line => line.substring(minSpaceSize)).join('\n')
+                }
+                ```
+            </template>
+        </div>
+        <div class="step" data-x="2000" data-y="0" data-rotate="90">
+            <template type="markdown">
+                目前还在继续完善
+                ====
+
+                码云地址为[https://git.oschina.net/hungtcs/marked-in-html](https://git.oschina.net/hungtcs/marked-in-html)
+            </template>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/javascript.min.js" charset="utf-8"></script>
+<script src="http://impress.github.io/impress.js/js/impress.js" charset="utf-8"></script>
+<script src="../static/js/marked-in-html.js" charset="utf-8"></script>
+<script type="text/javascript">
+    markedInHtml.init()
+    impress().init()
+</script>
+
+</html>
