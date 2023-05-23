@@ -70,12 +70,12 @@ footer {
   margin: auto;
   width: fit-content;
   /*实现div居中，宽度自适应 */
-  line-height: 80px;
+  line-height: 20px;
   /* position: absolute;
   top: 20px;
   right: 31vw; */
-  color: rgb(255, 165, 180);
-  font-size: 30px;
+  color: rgb(205, 205, 205);
+  font-size: 15px;
   font-family: '楷体';
 }
 

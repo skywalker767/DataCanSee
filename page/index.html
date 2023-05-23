@@ -295,42 +295,15 @@
 
   <!-- footer部份 -->
   <footer>
-    <p class="footer">制作：21级计应0035&nbsp-------&nbspLevi</p>
+    <p class="footer">计算机2006朱胜豪、王莹昊</p>
   </footer>
 
   <!-- 添加js文件 -->
   <script src="../static/js/nav.js" type="text/javascript"></script>
   <script src="../static/js/bg.js" type="text/javascript"></script>
   <script src="../static/js/cban.js" type="text/javascript"></script>
-  <script>
-    var ul = document.querySelector('.nav-menu')
-    var a = ul.querySelectorAll('li a')
-    console.dir(a)
-    window.addEventListener('resize', function (e) {
-      if (window.innerWidth < 575) {
-        for (let i = 0; i < a.length; i++) {
-          a[1].innerText = '电影介绍'
-          a[2].innerText = '作者介绍'
-          a[3].innerText = '关于龙猫'
-          a[4].innerText = '角色介绍'
-          a[5].innerText = 'Totoro'
-          a[2].href = '#zzjs'
-          a[3].href = '#gylm'
-          a[4].href = '#jsjs'
-        }
-      } else {
-        for (let i = 0; i < a.length; i++) {
-          a[1].innerText = '首页'
-          a[2].innerText = '角色介绍'
-          a[3].innerText = '基本信息'
-          a[4].innerText = '剧情介绍'
-          a[2].href = '#jiaoshe'
-          a[3].href = '#base'
-          a[4].href = '#plot'
-        }
-      }
-    })
-  </script>
+
+
 </body>
 
 </html>
