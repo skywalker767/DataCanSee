@@ -9,6 +9,19 @@
     box-shadow: 20px 20px 60px #bebebe,
         -20px -20px 60px #ffffff;
 }
+.big_div2 {
+    width: 50%!important;
+
+    margin: 0 auto!important;
+    text-align: center!important;
+    margin-top: 100px!important;
+    border-radius: 5px!important;
+    opacity: 0.5 !important; /* 设置字体半透明度 */
+    font-size: 50px !important; /* 根据需求调整字号大小 */
+    color: white !important; /* 设置字体颜色为白色 */
+  }
+  
+
 
 .big_div p {
     margin-top: 30px;

@@ -5,7 +5,7 @@
   font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
   text-decoration: none;
   scroll-behavior: smooth;
-  font-size: 15px;
+  /* font-size: 15px; */
   font-family: 'totoro' !important;
 }
 
@@ -53,9 +53,16 @@ tr {
 #title {
   font-family: '华文行楷' !important;
   color: rgb(0, 0, 0) !important;
-  font-size: 40px !important;
+  font-size: 15px !important;
   font-weight: 500 !important;
   margin-bottom: 15px;
+}
+#title2 {
+  font-family: '华文行楷' !important;
+  color: rgb(0, 0, 0) !important;
+  font-size: 80px !important;
+  font-weight: 500 !important;
+  margin-bottom: 40px;
 }
 
 footer {
@@ -230,6 +237,11 @@ nav {
   display: block;
   width: 100%;
   margin-top: 900px !important;
+}
+.big_div_005 {
+  display: block;
+  width: 100%;
+  /* margin-top: 20 !important; */
 }
 
 .big_div_004>.title {
