@@ -236,7 +236,7 @@ nav {
 .big_div_004 {
   display: block;
   width: 100%;
-  margin-top: 900px !important;
+  margin-top: 200px !important;
 }
 .big_div_005 {
   display: block;
@@ -261,7 +261,7 @@ nav {
   text-align: start !important;
   text-indent: 2em !important;
   color: black;
-  font-size: 30px;
+  font-size: 20px;
   margin-bottom: 30px;
   margin-top: 20px;
 }
