@@ -23,6 +23,12 @@ retu
 
 template 模板
 
+---
+命令
+
+git add .
+git commit -t "这次更新了什么"
+git push origin main
 
 **已知问题**
 
