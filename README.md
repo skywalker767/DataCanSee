@@ -14,8 +14,14 @@
 
 6.完善细节
 
+---
 
-7.asd
+文件构成
+page  
+navbar 路由
+retu 
+
+template 模板
 
 
 **已知问题**
