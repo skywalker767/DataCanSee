@@ -64,17 +64,11 @@
         });
 
         function run(_rawData) {
-            // var countries = ['Australia', 'Canada', 'China', 'Cuba', 'Finland', 'France', 'Germany', 'Iceland', 'India', 'Japan', 'North Korea', 'South Korea', 'New Zealand', 'Norway', 'Poland', 'Russia', 'Turkey', 'United Kingdom', 'United States'];
-            const countries = [
-                'Finland',
-                'France',
-                'Germany',
-                'Iceland',
-                'Norway',
-                'Poland',
-                'Russia',
-                'United Kingdom'
+            var countries = [
+                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
             ];
+
+
             const datasetWithFilters = [];
             const seriesList = [];
             echarts.util.each(countries, function (country) {
@@ -86,7 +80,7 @@
                         type: 'filter',
                         config: {
                             and: [
-                                { dimension: 'Year', gte: 1950 },
+                                { dimension: 'Year', gte: 0 },
                                 { dimension: 'Country', '=': country }
                             ]
                         }
@@ -100,7 +94,7 @@
                     endLabel: {
                         show: true,
                         formatter: function (params) {
-                            return params.value[3] + ': ' + params.value[0];
+                            return params.value[1] + ': ' + params.value[0];
                         }
                     },
                     labelLayout: {
