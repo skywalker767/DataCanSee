@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数据可视化</title>
-    <!-- ctrl+h即可调出查询与替换窗口 -->
-    <link rel="stylesheet" href="../static/styles.css" />
     <style>
         html,
         body {
@@ -67,27 +65,28 @@
     </style>
 </head>
 
-<div id="navbar-container">
-    <!-- 导航栏 -->
-</div>
 
-<script>
-    // 使用 JavaScript 加载导航栏内容
-    window.addEventListener('DOMContentLoaded', function () {
-        var navbarContainer = document.getElementById('navbar-container');
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'navbar.html', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                navbarContainer.innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    });
-
-</script>
 
 <body>
+    <div id="navbar-container">
+        <!-- 导航栏 -->
+    </div>
+
+    <script>
+        // 使用 JavaScript 加载导航栏内容
+        window.addEventListener('DOMContentLoaded', function () {
+            var navbarContainer = document.getElementById('navbar-container');
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'navmain.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    navbarContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        });
+
+    </script>
 
     <!-- <div class="background"><span>Gun</span></div> -->
     <div class="background"><span>Gun Violence</span></div>
@@ -99,7 +98,6 @@
         <p> asdasd</p>
 
     </h2>
-
     <script>
         const background = document.querySelector(".background")
 

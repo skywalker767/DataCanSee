@@ -8,7 +8,6 @@
     <!-- ctrl+h即可调出查询与替换窗口 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css" />
     <style>
         * {
             padding: 0;
@@ -55,27 +54,27 @@
     </style>
 </head>
 
-<div id="navbar-container">
-    <!-- 导航栏 -->
-</div>
-
-<script>
-    // 使用 JavaScript 加载导航栏内容
-    window.addEventListener('DOMContentLoaded', function () {
-        var navbarContainer = document.getElementById('navbar-container');
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'navbar.html', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                navbarContainer.innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    });
-</script>
-
 
 <body>
+    <div id="navbar-container">
+        <!-- 导航栏 -->
+    </div>
+
+    <script>
+        // 使用 JavaScript 加载导航栏内容
+        window.addEventListener('DOMContentLoaded', function () {
+            var navbarContainer = document.getElementById('navbar-container');
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'navbar.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    navbarContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        });
+    </script>
+
     <div class="shell">
         <div class="image" style="background-image: url('../static/image/1.jpg');"></div>
         <div class="heading">

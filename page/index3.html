@@ -8,23 +8,14 @@
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
-    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="stylesheet" href="../static/css/style3background.css">
+    <link rel="stylesheet" href="../static/css/sfq.css">
+    <link rel="stylesheet" href="../static/css/big_div.css">
+    <link rel="stylesheet" href="../static/css/media.css">
+    <link rel="stylesheet" href="../static/css/bg.css">
+    <link rel="stylesheet" href="../static/css/cban.css">
+    <link rel="stylesheet" href="../static/css/btn.css">
     <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-
-        #navbar-container {
-            height: 70px;
-            background-color: #f2f2f2;
-            /* 导航栏样式 */
-            /* ... */
-        }
-
         #main {
             width: 800px;
             height: 600px;
@@ -33,44 +24,31 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
-        .btn-container {
-            text-align: center;
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-        }
     </style>
 </head>
 
 
-<div id="navbar-container">
-    <!-- 导航栏 -->
-</div>
-
-<script>
-    // 使用 JavaScript 加载导航栏内容
-    window.addEventListener('DOMContentLoaded', function () {
-        var navbarContainer = document.getElementById('navbar-container');
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', './navbar.html', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                navbarContainer.innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    });
-</script>
-
-
 <body>
-    <div id="main" style="width: 800px; height: 400px;"></div>
+    <div id="navbar-container"></div>
 
-    <div class="btn-container">
-        <button id="toggle-chart" class="btn">切换图表</button>
-    </div>
+    <!-- 其他页面内容 -->
+
+    <script>
+        // 使用 JavaScript 加载导航栏内容
+        window.addEventListener('DOMContentLoaded', function () {
+            var navbarContainer = document.getElementById('navbar-container');
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './navgeo.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    navbarContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        });
+    </script>
+
+    <div id="main" style="width: 800px; height: 400px;"></div>
     <script>
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
@@ -270,10 +248,11 @@
                 }
             ]
         };
-
-        // <div class="btn-container">
-        //     <button id="toggle-chart" class="btn">切换图表</button>
-        // </div>
+    </script>
+    <div class="btn-container">
+        <button id="toggle-chart" class="btn" style="position: fixed;top: 80%;">切换图表</button>
+    </div>
+    <script>
         var currentOption = scatterOption;
         myChart.setOption(currentOption, true);
 
