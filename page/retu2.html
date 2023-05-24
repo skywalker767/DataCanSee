@@ -192,12 +192,25 @@
 
                 },
                 tooltip: {
-                    trigger: 'item',
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            precision: 0  // 设置数值精度
+                        },
+                        crossStyle: {
+                            color: '#999',
+                            type: 'dashed'
+                        }
+                    },
                     formatter: function (params) {
-                        return params.name + ' : ' + params.value;
+                        var seriesName = params[0].seriesName;
+                        var dataValue = params[0].data;
+                        var xAxisName = params[0].axisValue;
+                        return xAxisName + ' : ' + dataValue;
                     },
                     textStyle: {
-                        fontSize: 10 // 调整提示框字体大小
+                        fontSize: 12
                     },
                     // backgroundColor: 'rgba(50,50,50,0.7)' // 设置提示框背景颜色和透明度
                 }
