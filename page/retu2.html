@@ -182,8 +182,26 @@
                     data: data.map(function (item) {
                         return item.value;
                     }),
-                    universalTransition: true
+                    universalTransition: true,
+                    itemStyle: {
+                        emphasis: {
+                            // 设置柱状图的高亮样式
+                            opacity: 1
+                        }
+                    }
+
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        return params.name + ' : ' + params.value;
+                    },
+                    textStyle: {
+                        fontSize: 10 // 调整提示框字体大小
+                    },
+                    // backgroundColor: 'rgba(50,50,50,0.7)' // 设置提示框背景颜色和透明度
                 }
+
             };
             let currentOption = mapOption;
             myChart.setOption(mapOption);
