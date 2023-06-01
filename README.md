@@ -1,22 +1,10 @@
-#### 数据可视化作业文档
+#### 数据可视化作业
 
 ---
 
-1.Git创建
+通过Echarts实现多组数据的数据可视化。
 
-2.构建主页面，创建导航栏
+![最后更新时间](https://img.shields.io/github/last-commit/skywalker767/skywalker767.github.io?style=plastic)![最后更新时间](https://img.shields.io/github/repo-size/skywalker767/skywalker767.github.io)
 
-3.创建第一个图——热图
 
-4.创建第二个，并且更新css
-
-5.创建多个图
-
-6.完善细节
-
-asd
-
-**已知问题**
-
-~~1.导航栏二级菜单停止时间太少，会直接缩进去~~
 
