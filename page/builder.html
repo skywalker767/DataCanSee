@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="description" content="Apache ECharts，一款基于JavaScript的数据可视化图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。">
+    <meta name="keywords"
+        content="echarts,apache,charts,data-visualization,charting-library,visualization,data-viz,canvas,svg,plot,graph">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://fastly.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries-->
+    <!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="https://echarts.apache.org/zh/css/main.css?_v_=a95711177c">
+    </script>
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/pace-progressbar@1.0.2/pace.min.js"></script>
+    <script id="font-hack" type="text/javascript">if (/windows/i.test(navigator.userAgent)) {
+            var el = document.createElement('style');
+            el.innerHTML = ''
+                + '@font-face {font-family:"noto-thin";src:local("Microsoft Yahei");}'
+                + '@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}';
+            document.head.insertBefore(el, document.getElementById('font-hack'));
+        }
+    </script>
+    <title>图表设计</title>
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- <style>
+        #main {
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style> -->
+</head>
+<div id="navbar-container">
+    <!-- 导航栏 -->
+</div>
+
+<script>
+    // 使用 JavaScript 加载导航栏内容
+    window.addEventListener('DOMContentLoaded', function () {
+        var navbarContainer = document.getElementById('navbar-container');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './navgeo.html', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                navbarContainer.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    });
+</script>
+
+
+<div id="main">
+    <div class="page-main">
+        <div id="builder">
+
+            <div class="page-content">
+                <div id="configuration" class="container">
+                    <section id="charts">
+                        <h3>图表<span>chart</span></h3>
+                        <p class="desc">选择图表<span class="warn"></span></p>
+                        <ul>
+                            <a href="retu2.html">
+                                <li><img src="https://echarts.apache.org/zh/images/builder/chart/heatmap.svg?_v_=20200710_1"
+                                        alt=""><input type="checkbox" name="heatmap">
+                                    <h5>热力图 <div>Heatmap</div>
+                                    </h5>
+                                </li>
+                            </a>
+                            <a href="index6.html">
+                                <li><img src="https://echarts.apache.org/zh/images/builder/chart/bar.svg?_v_=20200710_1"
+                                        alt=""><input type="checkbox" name="bar">
+                                    <h5>各州趋势图 <div>Bar</div>
+                                    </h5>
+                                </li>
+                            </a>
+                            <a href="index9.html">
+                                <li><img src="https://echarts.apache.org/zh/images/builder/chart/line.svg?_v_=20200710_1"
+                                        alt=""><input type="checkbox" name="line">
+                                    <h5>折线图 <div>Line</div>
+                                    </h5>
+                                </li>
+                            </a>
+                            <a href="index7.html">
+                                <li><img src="https://echarts.apache.org/zh/images/builder/chart/pie.svg?_v_=20200710_1"
+                                        alt=""><input type="checkbox" name="pie">
+                                    <h5>饼图 <div>Pie</div>
+                                    </h5>
+                                </li>
+                            </a>
+                            <a href="index3.html">
+                                <li><img src="https://echarts.apache.org/zh/images/builder/chart/scatter.svg?_v_=20200710_1"
+                                        alt=""><input type="checkbox" name="scatter">
+                                    <h5>散点图 <div>Scatter</div>
+                                    </h5>
+                                </li>
+                            </a>
+                    </section>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://echarts.apache.org/zh/js/common.js?_v_=85b684f192"></script>
+<script src="https://fastly.jsdelivr.net/npm/compare-versions@3.6.0/index.min.js"></script>
+
+
+</html>

@@ -1,22 +1,19 @@
-#### 数据可视化作业文档
+## 数据可视化作业
+
+![最后更新时间](https://img.shields.io/github/last-commit/skywalker767/skywalker767.github.io?style=plastic)![项目大小](https://img.shields.io/github/repo-size/skywalker767/skywalker767.github.io)
 
 ---
 
-1.Git创建
+**项目主题**：美国枪支暴力犯罪数据可视化
 
-2.构建主页面，创建导航栏
+**开发工具**：Vscode
 
-3.创建第一个图——热图
+**数据主要来源**：https://www.gunviolencearchive.org/   
 
-4.创建第二个，并且更新css
+**数据处理**：Python
 
-5.创建多个图
+**图像处理**：Echarts.js
 
-6.完善细节
+**主要技术**：JavaScript,Html,CSS,Python
 
-
-
-**已知问题**
-
-~~1.导航栏二级菜单停止时间太少，会直接缩进去~~
-
+**报告文档**：https://docs.qq.com/doc/DTGNwaHJjQW9SSGlp
