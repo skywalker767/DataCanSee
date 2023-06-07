@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
-    <link rel="shortcut icon" href="favicon.ico" />
+
     <style>
         #main {
             width: 800px;
@@ -72,7 +72,7 @@
                     name: '类别',
                     type: 'pie',
                     radius: '55%',
-                    center: ['40%', '50%'],
+                    center: ['33%', '50%'],
                     data: data.seriesData,
                     emphasis: {
                         itemStyle: {
@@ -85,14 +85,15 @@
             ]
         };
         function genData() {
-            const legendData = ['儿童受伤或死亡人数(占总伤亡人数1.62％)', '青少年受伤或死亡人数(占总伤亡人数7.20％)', '警察殉职(占总伤亡人数0.67％)', '作案人被击毙(占总伤亡人数4.37％)', '因家庭入侵事件受伤或死亡人数(占总伤亡人数4.91％)', '意外事件导致的受伤或死亡人数(占总伤亡人数4.02％)'];
+            const legendData = ['儿童受伤或死亡人数', '青少年受伤或死亡人数', '警察殉职', '作案人被击毙', '因家庭入侵事件受伤或死亡人数', '意外事件导致的受伤或死亡人数', '其他(包括但不限于街头冲突等伤亡因素)'];
             const seriesData = [
-                { name: '儿童受伤或死亡人数(占总伤亡人数1.62％)', value: 7067 },
-                { name: '青少年受伤或死亡人数(占总伤亡人数7.20％)', value: 31395 },
-                { name: '警察殉职(占总伤亡人数0.67％)', value: 3019 },
-                { name: '作案人被击毙(占总伤亡人数4.37％)', value: 19058 },
-                { name: '因家庭入侵事件受伤或死亡人数(占总伤亡人数4.91％)', value: 21420 },
-                { name: '意外事件导致的受伤或死亡人数(占总伤亡人数4.02％)', value: 17544 },
+                { name: '儿童受伤或死亡人数', value: 7067 },
+                { name: '青少年受伤或死亡人数', value: 31395 },
+                { name: '警察殉职', value: 3019 },
+                { name: '作案人被击毙', value: 19058 },
+                { name: '因家庭入侵事件受伤或死亡人数', value: 21420 },
+                { name: '意外事件导致的受伤或死亡人数', value: 17544 },
+                { name: '其他(包括但不限于街头冲突等伤亡因素)', value: 336585 }
             ];
             return {
                 legendData: legendData,
