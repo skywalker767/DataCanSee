@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ECharts Map Example</title>
+    <title>旭日图</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
@@ -12,8 +12,6 @@
 
     <style>
         #main {
-            width: 800px;
-            height: 600px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -54,11 +52,9 @@
     <script>
 
         var app = {};
-
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
         var option;
-
         var data = [
             {
                 name: '2014',
@@ -932,30 +928,9 @@
                     },
                 ],
             },
-
-
-
-
-
-
-
         ];
         option = {
-            // title: {
-            //     text: 'WORLD COFFEE RESEARCH SENSORY LEXICON',
-            //     subtext: 'Source: https://worldcoffeeresearch.org/work/sensory-lexicon/',
-            //     textStyle: {
-            //         fontSize: 14,
-            //         align: 'center'
-            //     },
-            //     subtextStyle: {
-            //         align: 'center'
-            //     },
-            //     sublink: 'https://worldcoffeeresearch.org/work/sensory-lexicon/'
-            // },
-            tooltip: {
-
-            },
+            tooltip: {},
             series: {
                 type: 'sunburst',
                 data: data,
@@ -973,7 +948,7 @@
                             borderWidth: 2
                         },
                         label: {
-                            rotate: 'tangential'
+                            rotate: 'tangential',
                         }
                     },
                     {
@@ -981,7 +956,7 @@
                         r: '70%',
                         label: {
                             align: 'right',
-                            show: false
+                            show: false,
                         }
                     },
                     {
@@ -1000,8 +975,27 @@
                 ]
             }
         };
+        myChart.setOption(option);
 
-        option && myChart.setOption(option);
+        myChart.on('click', function (params) {
+            if (params.depth === 1) { // 如果点击的是一年的节点
+                myChart.dispatchAction({
+                    type: 'downplay', // 先将所有节点置为低亮状态，隐藏标签
+                    seriesIndex: 0,
+                });
+                myChart.dispatchAction({
+                    type: 'highlight', // 再将当前节点及其子节点置为高亮状态，显示标签
+                    seriesIndex: 0,
+                    dataIndex: params.dataIndex,
+                });
+            } else { // 如果点击的不是一年的节点
+                myChart.dispatchAction({
+                    type: 'downplay', // 将所有节点置为低亮状态，隐藏标签
+                    seriesIndex: 0,
+                });
+            }
+        });
+
 
     </script>
 

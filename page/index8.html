@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ECharts Map Example</title>
+    <title>堆叠图</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
@@ -57,6 +57,13 @@
         var option;
 
         option = {
+
+            legend: {
+                selected: {
+                    '死亡': false,
+                    '受伤': false,
+                }
+            },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -64,12 +71,7 @@
                     type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
                 }
             },
-            legend: {
-                selected: {
-                    'Number of Deaths': false,
-                    'Number of Injuries': false,
-                }
-            },
+
             grid: {
                 left: '3%',
                 right: '4%',
@@ -85,7 +87,7 @@
             },
             series: [
                 {
-                    name: 'Number of Deaths',
+                    name: '死亡',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -97,7 +99,7 @@
                     data: [12347, 13577, 15145, 15749, 14940, 15516, 19584, 21042, 20273]
                 },
                 {
-                    name: 'Number of Injuries',
+                    name: '受伤',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -109,7 +111,7 @@
                     data: [21861, 26892, 30582, 31361, 28244, 30203, 39541, 40599, 38591]
                 },
                 {
-                    name: 'Affiliate Ad',
+                    name: '儿童',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -118,10 +120,10 @@
                     emphasis: {
                         focus: 'series'
                     },
-                    data: [220, 182, 191, 234, 290, 330, 310]
+                    data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994]
                 },
                 {
-                    name: 'Video Ad',
+                    name: '青少年',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -130,10 +132,10 @@
                     emphasis: {
                         focus: 'series'
                     },
-                    data: [150, 212, 201, 154, 190, 330, 410]
+                    data: data = [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176]
                 },
                 {
-                    name: 'Search Engine',
+                    name: '大规模枪支暴力',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -142,7 +144,55 @@
                     emphasis: {
                         focus: 'series'
                     },
-                    data: [820, 832, 901, 934, 1290, 1330, 1320]
+                    data: [272, 336, 383, 348, 336, 415, 610, 690, 646]
+                },
+                {
+                    name: '警员被杀',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: false,
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [229, 279, 309, 302, 276, 367, 404, 441, 412]
+                },
+                {
+                    name: '嫌疑人被击毙',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: false,
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [1851, 2044, 2018, 2148, 2190, 2085, 2225, 2223, 2274]
+                },
+                {
+                    name: '自卫',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: false,
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [1459, 1395, 1992, 2118, 1888, 1622, 1515, 1311, 1198]
+                },
+                {
+                    name: '无意射杀',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: false,
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [1647, 1997, 2235, 2065, 1696, 1912, 2335, 2030, 1627]
                 }
             ]
         };
