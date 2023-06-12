@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>动态折线图</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <style>
+        #main {
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据可视化</title>
+    <!-- ctrl+h即可调出查询与替换窗口 -->
+</head>
+
+
+
+<body>
+    <div id="navbar-container">
+        <!-- 导航栏 -->
+    </div>
+
+    <script>
+        // 使用 JavaScript 加载导航栏内容
+        window.addEventListener('DOMContentLoaded', function () {
+            var navbarContainer = document.getElementById('navbar-container');
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './navgeo.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    navbarContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        });
+    </script>
+
+    <div id="main" style="width: 800px; height: 400px;"></div>
+    <script>
+
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        setTimeout(function () {
+            option = {
+                dataZoom: [
+                    {
+                        id: 'dataZoomY',
+                        type: 'slider',
+                        yAxisIndex: [0],
+                        filterMode: 'empty'
+                    }
+                ],
+                legend: {},
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false
+                },
+                dataset: {
+                    source: [
+                        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                        ['Milk Tea', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
+                        ['Matcha Latte', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+                        ['Cheese Cocoa', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
+                        ['Walnut Brownie', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
+                    ]
+                },
+                xAxis: { type: 'category' },
+                yAxis: { gridIndex: 0 },
+                grid: { top: '55%' },
+                series: [
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'pie',
+                        id: 'pie',
+                        radius: '30%',
+                        center: ['50%', '25%'],
+                        emphasis: {
+                            focus: 'self'
+                        },
+                        label: {
+                            formatter: '{b}: {@2012} ({d}%)'
+                        },
+                        encode: {
+                            itemName: 'product',
+                            value: '2012',
+                            tooltip: '2012'
+                        }
+                    }
+                ]
+            };
+            myChart.on('updateAxisPointer', function (event) {
+                const xAxisInfo = event.axesInfo[0];
+                if (xAxisInfo) {
+                    const dimension = xAxisInfo.value + 1;
+                    myChart.setOption({
+                        series: {
+                            id: 'pie',
+                            label: {
+                                formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                            },
+                            encode: {
+                                value: dimension,
+                                tooltip: dimension
+                            }
+                        }
+                    });
+                }
+            });
+            myChart.setOption(option);
+        });
+
+        option && myChart.setOption(option);
+
+    </script>
+
+</body>
+
+</html>
