@@ -42,107 +42,107 @@
       </ul>
     </nav>
     <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
-    </head>
 
+  </header>
 
-    <div id="main" style="width: 800px; height: 400px;"></div>
-    <script>
-      var chartDom = document.getElementById('main');
-      var myChart = echarts.init(chartDom);
-      var option;
+  <div id="main" style="width: 800px; height: 400px;"></div>
+  <script>
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    var option;
 
-      option = {
-        title: {
-          text: '2014年-2022年儿童及青少年伤亡数量变化',
-          textStyle: {
-            fontSize: 15
+    option = {
+      title: {
+        text: '2014年-2022年儿童及青少年伤亡数量变化',
+        textStyle: {
+          fontSize: 15
+        },
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {},
+      toolbox: {
+        show: true,
+        feature: {
+          dataZoom: {
+            show: true, // 开启区域缩放
+            yAxisIndex: 'none'
           },
+          dataView: { readOnly: true },
+          // magicType: { type: ['line', 'bar'] },
+          restore: {},
+          saveAsImage: {}
+        }
+      },
+
+
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+      },
+      yAxis: [
+        {
+          type: 'value',
+          axisLabel: {
+            color: "rgba(84, 112, 198, 1)"
+          },
+          min: 500,
+          max: 1200
         },
-        tooltip: {
-          trigger: 'axis'
-        },
-        legend: {},
-        toolbox: {
-          show: true,
-          feature: {
-            dataZoom: {
-              show: true, // 开启区域缩放
-              yAxisIndex: 'none'
-            },
-            dataView: { readOnly: true },
-            // magicType: { type: ['line', 'bar'] },
-            restore: {},
-            saveAsImage: {}
+        {
+          type: 'value',
+          axisLabel: {
+            color: "rgba(145, 204, 117, 1)"
+          },
+          min: 2000,
+          max: 6000,
+
+        }
+      ],
+
+      series: [
+        {
+          name: '儿童',
+          type: 'line',
+          data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994],
+          markPoint: {
+            data: [
+              { type: 'max', name: 'Max' },
+            ]
+          },
+          markLine: {
+            data: [{ type: 'average', name: 'Avg' }],
+            symbol: ''
           }
         },
 
-
-        xAxis: {
-          type: 'category',
-          boundaryGap: false,
-          data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
-        },
-        yAxis: [
-          {
-            type: 'value',
-            axisLabel: {
-              color: "rgba(84, 112, 198, 1)"
-            },
-            min: 500,
-            max: 1200
+        {
+          name: '青少年',
+          type: 'line',
+          data: [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176],
+          yAxisIndex: 1, // 指定使用索引为 1 的坐标轴
+          markPoint: {
+            data: [
+              { type: 'max', name: 'Max' },
+            ]
           },
-          {
-            type: 'value',
-            axisLabel: {
-              color: "rgba(145, 204, 117, 1)"
-            },
-            min: 2000,
-            max: 6000,
+          markLine: {
+            data: [
+              { type: 'average', name: 'Avg' }
 
+
+            ],
+            symbol: ''
           }
-        ],
-
-        series: [
-          {
-            name: '儿童',
-            type: 'line',
-            data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994],
-            markPoint: {
-              data: [
-                { type: 'max', name: 'Max' },
-              ]
-            },
-            markLine: {
-              data: [{ type: 'average', name: 'Avg' }],
-              symbol: ''
-            }
-          },
-
-          {
-            name: '青少年',
-            type: 'line',
-            data: [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176],
-            yAxisIndex: 1, // 指定使用索引为 1 的坐标轴
-            markPoint: {
-              data: [
-                { type: 'max', name: 'Max' },
-              ]
-            },
-            markLine: {
-              data: [
-                { type: 'average', name: 'Avg' }
+        }
+      ]
+    };
 
 
-              ],
-              symbol: ''
-            }
-          }
-        ]
-      };
-
-
-      option && myChart.setOption(option);
-    </script>
+    option && myChart.setOption(option);
+  </script>
 
 </body>
 

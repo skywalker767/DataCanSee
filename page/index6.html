@@ -42,514 +42,514 @@
             </ul>
         </nav>
         <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
-        </head>
 
+    </header>
 
-        <div id="main" style="width: 800px; height: 400px;"></div>
-        <script>
+    <div id="main" style="width: 800px; height: 400px;"></div>
+    <script>
 
-            var chartDom = document.getElementById('main');
-            var myChart = echarts.init(chartDom);
-            var option;
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
 
-            const yearCount = 9; // 起始年份为2014，终止年份为2022
-            const stateCount = 50;
-            const xAxisData = [];
-            const customData = [];
-            const legendData = [];
-            const dataList = [];
-            legendData.push('trend');
-            const encodeY = [];
-            for (var i = 0; i < yearCount; i++) {
-                legendData.push(2014 + i + ''); // 起始年份为2014
-                dataList.push([]);
-                encodeY.push(1 + i);
+        const yearCount = 9; // 起始年份为2014，终止年份为2022
+        const stateCount = 50;
+        const xAxisData = [];
+        const customData = [];
+        const legendData = [];
+        const dataList = [];
+        legendData.push('trend');
+        const encodeY = [];
+        for (var i = 0; i < yearCount; i++) {
+            legendData.push(2014 + i + ''); // 起始年份为2014
+            dataList.push([]);
+            encodeY.push(1 + i);
+        }
+
+        // 数据填充操作
+        const data = [
+
+            { Year: 2014, State: 'Alabama', Count: 2 },
+            { Year: 2014, State: 'Alaska', Count: 1 },
+            { Year: 2014, State: 'Arizona', Count: 1 },
+            { Year: 2014, State: 'Arkansas', Count: 2 },
+            { Year: 2014, State: 'California', Count: 41 },
+            { Year: 2014, State: 'Colorado', Count: 2 },
+            { Year: 2014, State: 'Connecticut', Count: 1 },
+            { Year: 2014, State: 'District of Columbia', Count: 6 },
+            { Year: 2014, State: 'Florida', Count: 17 },
+            { Year: 2014, State: 'Georgia', Count: 17 },
+            { Year: 2014, State: 'Illinois', Count: 26 },
+            { Year: 2014, State: 'Indiana', Count: 8 },
+            { Year: 2014, State: 'Kentucky', Count: 4 },
+            { Year: 2014, State: 'Louisiana', Count: 11 },
+            { Year: 2014, State: 'Maine', Count: 1 },
+            { Year: 2014, State: 'Maryland', Count: 1 },
+            { Year: 2014, State: 'Massachusetts', Count: 4 },
+            { Year: 2014, State: 'Michigan', Count: 10 },
+            { Year: 2014, State: 'Minnesota', Count: 1 },
+            { Year: 2014, State: 'Mississippi', Count: 5 },
+            { Year: 2014, State: 'Missouri', Count: 8 },
+            { Year: 2014, State: 'Nevada', Count: 4 },
+            { Year: 2014, State: 'New Jersey', Count: 6 },
+            { Year: 2014, State: 'New Mexico', Count: 1 },
+            { Year: 2014, State: 'New York', Count: 14 },
+            { Year: 2014, State: 'North Carolina', Count: 3 },
+            { Year: 2014, State: 'Ohio', Count: 7 },
+            { Year: 2014, State: 'Oklahoma', Count: 2 },
+            { Year: 2014, State: 'Oregon', Count: 2 },
+            { Year: 2014, State: 'Pennsylvania', Count: 10 },
+            { Year: 2014, State: 'Rhode Island', Count: 1 },
+            { Year: 2014, State: 'South Carolina', Count: 7 },
+            { Year: 2014, State: 'South Dakota', Count: 1 },
+            { Year: 2014, State: 'Tennessee', Count: 13 },
+            { Year: 2014, State: 'Texas', Count: 17 },
+            { Year: 2014, State: 'Utah', Count: 2 },
+            { Year: 2014, State: 'Virginia', Count: 8 },
+            { Year: 2014, State: 'Washington', Count: 3 },
+            { Year: 2014, State: 'Wisconsin', Count: 2 },
+            { Year: 2015, State: 'Alabama', Count: 4 },
+            { Year: 2015, State: 'Arizona', Count: 6 },
+            { Year: 2015, State: 'Arkansas', Count: 2 },
+            { Year: 2015, State: 'California', Count: 27 },
+            { Year: 2015, State: 'Colorado', Count: 3 },
+            { Year: 2015, State: 'Connecticut', Count: 2 },
+            { Year: 2015, State: 'Delaware', Count: 1 },
+            { Year: 2015, State: 'District of Columbia', Count: 3 },
+            { Year: 2015, State: 'Florida', Count: 26 },
+            { Year: 2015, State: 'Georgia', Count: 20 },
+            { Year: 2015, State: 'Illinois', Count: 25 },
+            { Year: 2015, State: 'Indiana', Count: 10 },
+            { Year: 2015, State: 'Iowa', Count: 2 },
+            { Year: 2015, State: 'Kansas', Count: 1 },
+            { Year: 2015, State: 'Kentucky', Count: 4 },
+            { Year: 2015, State: 'Louisiana', Count: 15 },
+            { Year: 2015, State: 'Maryland', Count: 13 },
+            { Year: 2015, State: 'Massachusetts', Count: 5 },
+            { Year: 2015, State: 'Michigan', Count: 11 },
+            { Year: 2015, State: 'Minnesota', Count: 5 },
+            { Year: 2015, State: 'Mississippi', Count: 2 },
+            { Year: 2015, State: 'Missouri', Count: 13 },
+            { Year: 2015, State: 'Montana', Count: 1 },
+            { Year: 2015, State: 'Nebraska', Count: 3 },
+            { Year: 2015, State: 'Nevada', Count: 1 },
+            { Year: 2015, State: 'New Jersey', Count: 9 },
+            { Year: 2015, State: 'New Mexico', Count: 2 },
+            { Year: 2015, State: 'New York', Count: 21 },
+            { Year: 2015, State: 'North Carolina', Count: 12 },
+            { Year: 2015, State: 'Ohio', Count: 14 },
+            { Year: 2015, State: 'Oklahoma', Count: 5 },
+            { Year: 2015, State: 'Oregon', Count: 2 },
+            { Year: 2015, State: 'Pennsylvania', Count: 14 },
+            { Year: 2015, State: 'Rhode Island', Count: 1 },
+            { Year: 2015, State: 'South Carolina', Count: 11 },
+            { Year: 2015, State: 'South Dakota', Count: 1 },
+            { Year: 2015, State: 'Tennessee', Count: 11 },
+            { Year: 2015, State: 'Texas', Count: 18 },
+            { Year: 2015, State: 'Vermont', Count: 1 },
+            { Year: 2015, State: 'Virginia', Count: 5 },
+            { Year: 2015, State: 'Washington', Count: 1 },
+            { Year: 2015, State: 'Wisconsin', Count: 3 },
+            { Year: 2016, State: 'Alabama', Count: 15 },
+            { Year: 2016, State: 'Arizona', Count: 4 },
+            { Year: 2016, State: 'Arkansas', Count: 3 },
+            { Year: 2016, State: 'California', Count: 46 },
+            { Year: 2016, State: 'Colorado', Count: 4 },
+            { Year: 2016, State: 'Connecticut', Count: 6 },
+            { Year: 2016, State: 'Delaware', Count: 2 },
+            { Year: 2016, State: 'District of Columbia', Count: 5 },
+            { Year: 2016, State: 'Florida', Count: 30 },
+            { Year: 2016, State: 'Georgia', Count: 17 },
+            { Year: 2016, State: 'Illinois', Count: 42 },
+            { Year: 2016, State: 'Indiana', Count: 8 },
+            { Year: 2016, State: 'Kansas', Count: 5 },
+            { Year: 2016, State: 'Kentucky', Count: 2 },
+            { Year: 2016, State: 'Louisiana', Count: 14 },
+            { Year: 2016, State: 'Maryland', Count: 11 },
+            { Year: 2016, State: 'Massachusetts', Count: 3 },
+            { Year: 2016, State: 'Michigan', Count: 11 },
+            { Year: 2016, State: 'Minnesota', Count: 5 },
+            { Year: 2016, State: 'Mississippi', Count: 6 },
+            { Year: 2016, State: 'Missouri', Count: 10 },
+            { Year: 2016, State: 'Nevada', Count: 3 },
+            { Year: 2016, State: 'New Jersey', Count: 9 },
+            { Year: 2016, State: 'New Mexico', Count: 4 },
+            { Year: 2016, State: 'New York', Count: 15 },
+            { Year: 2016, State: 'North Carolina', Count: 9 },
+            { Year: 2016, State: 'Ohio', Count: 11 },
+            { Year: 2016, State: 'Oklahoma', Count: 1 },
+            { Year: 2016, State: 'Oregon', Count: 2 },
+            { Year: 2016, State: 'Pennsylvania', Count: 10 },
+            { Year: 2016, State: 'South Carolina', Count: 5 },
+            { Year: 2016, State: 'Tennessee', Count: 12 },
+            { Year: 2016, State: 'Texas', Count: 31 },
+            { Year: 2016, State: 'Virginia', Count: 11 },
+            { Year: 2016, State: 'Washington', Count: 8 },
+            { Year: 2016, State: 'West Virginia', Count: 1 },
+            { Year: 2016, State: 'Wisconsin', Count: 2 },
+            { Year: 2017, State: 'Alabama', Count: 7 },
+            { Year: 2017, State: 'Arizona', Count: 5 },
+            { Year: 2017, State: 'Arkansas', Count: 3 },
+            { Year: 2017, State: 'California', Count: 38 },
+            { Year: 2017, State: 'Colorado', Count: 2 },
+            { Year: 2017, State: 'Connecticut', Count: 2 },
+            { Year: 2017, State: 'Delaware', Count: 1 },
+            { Year: 2017, State: 'District of Columbia', Count: 5 },
+            { Year: 2017, State: 'Florida', Count: 24 },
+            { Year: 2017, State: 'Georgia', Count: 9 },
+            { Year: 2017, State: 'Illinois', Count: 37 },
+            { Year: 2017, State: 'Indiana', Count: 7 },
+            { Year: 2017, State: 'Iowa', Count: 2 },
+            { Year: 2017, State: 'Kansas', Count: 4 },
+            { Year: 2017, State: 'Kentucky', Count: 6 },
+            { Year: 2017, State: 'Louisiana', Count: 15 },
+            { Year: 2017, State: 'Maine', Count: 1 },
+            { Year: 2017, State: 'Maryland', Count: 8 },
+            { Year: 2017, State: 'Massachusetts', Count: 1 },
+            { Year: 2017, State: 'Michigan', Count: 8 },
+            { Year: 2017, State: 'Minnesota', Count: 4 },
+            { Year: 2017, State: 'Mississippi', Count: 13 },
+            { Year: 2017, State: 'Missouri', Count: 10 },
+            { Year: 2017, State: 'Montana', Count: 1 },
+            { Year: 2017, State: 'Nevada', Count: 2 },
+            { Year: 2017, State: 'New Jersey', Count: 13 },
+            { Year: 2017, State: 'New Mexico', Count: 2 },
+            { Year: 2017, State: 'New York', Count: 13 },
+            { Year: 2017, State: 'North Carolina', Count: 7 },
+            { Year: 2017, State: 'Ohio', Count: 21 },
+            { Year: 2017, State: 'Oklahoma', Count: 1 },
+            { Year: 2017, State: 'Pennsylvania', Count: 16 },
+            { Year: 2017, State: 'South Carolina', Count: 7 },
+            { Year: 2017, State: 'Tennessee', Count: 14 },
+            { Year: 2017, State: 'Texas', Count: 21 },
+            { Year: 2017, State: 'Utah', Count: 1 },
+            { Year: 2017, State: 'Virginia', Count: 12 },
+            { Year: 2017, State: 'Washington', Count: 3 },
+            { Year: 2017, State: 'Wisconsin', Count: 2 },
+            { Year: 2018, State: 'Alabama', Count: 14 },
+            { Year: 2018, State: 'Arizona', Count: 2 },
+            { Year: 2018, State: 'Arkansas', Count: 6 },
+            { Year: 2018, State: 'California', Count: 35 },
+            { Year: 2018, State: 'Colorado', Count: 8 },
+            { Year: 2018, State: 'Connecticut', Count: 2 },
+            { Year: 2018, State: 'Delaware', Count: 1 },
+            { Year: 2018, State: 'District of Columbia', Count: 6 },
+            { Year: 2018, State: 'Florida', Count: 30 },
+            { Year: 2018, State: 'Georgia', Count: 8 },
+            { Year: 2018, State: 'Illinois', Count: 35 },
+            { Year: 2018, State: 'Indiana', Count: 6 },
+            { Year: 2018, State: 'Kansas', Count: 2 },
+            { Year: 2018, State: 'Kentucky', Count: 4 },
+            { Year: 2018, State: 'Louisiana', Count: 13 },
+            { Year: 2018, State: 'Maryland', Count: 9 },
+            { Year: 2018, State: 'Massachusetts', Count: 1 },
+            { Year: 2018, State: 'Michigan', Count: 8 },
+            { Year: 2018, State: 'Minnesota', Count: 3 },
+            { Year: 2018, State: 'Mississippi', Count: 3 },
+            { Year: 2018, State: 'Missouri', Count: 14 },
+            { Year: 2018, State: 'Nebraska', Count: 3 },
+            { Year: 2018, State: 'Nevada', Count: 4 },
+            { Year: 2018, State: 'New Jersey', Count: 10 },
+            { Year: 2018, State: 'New Mexico', Count: 2 },
+            { Year: 2018, State: 'New York', Count: 13 },
+            { Year: 2018, State: 'North Carolina', Count: 10 },
+            { Year: 2018, State: 'Ohio', Count: 11 },
+            { Year: 2018, State: 'Oklahoma', Count: 5 },
+            { Year: 2018, State: 'Pennsylvania', Count: 19 },
+            { Year: 2018, State: 'South Carolina', Count: 4 },
+            { Year: 2018, State: 'Tennessee', Count: 18 },
+            { Year: 2018, State: 'Texas', Count: 15 },
+            { Year: 2018, State: 'Utah', Count: 1 },
+            { Year: 2018, State: 'Virginia', Count: 4 },
+            { Year: 2018, State: 'Washington', Count: 3 },
+            { Year: 2018, State: 'Wisconsin', Count: 4 },
+            { Year: 2019, State: 'Alabama', Count: 12 },
+            { Year: 2019, State: 'Arizona', Count: 5 },
+            { Year: 2019, State: 'Arkansas', Count: 5 },
+            { Year: 2019, State: 'California', Count: 49 },
+            { Year: 2019, State: 'Colorado', Count: 4 },
+            { Year: 2019, State: 'Connecticut', Count: 3 },
+            { Year: 2019, State: 'Delaware', Count: 2 },
+            { Year: 2019, State: 'District of Columbia', Count: 7 },
+            { Year: 2019, State: 'Florida', Count: 15 },
+            { Year: 2019, State: 'Georgia', Count: 19 },
+            { Year: 2019, State: 'Illinois', Count: 41 },
+            { Year: 2019, State: 'Indiana', Count: 10 },
+            { Year: 2019, State: 'Iowa', Count: 3 },
+            { Year: 2019, State: 'Kansas', Count: 4 },
+            { Year: 2019, State: 'Kentucky', Count: 5 },
+            { Year: 2019, State: 'Louisiana', Count: 26 },
+            { Year: 2019, State: 'Maryland', Count: 21 },
+            { Year: 2019, State: 'Massachusetts', Count: 5 },
+            { Year: 2019, State: 'Michigan', Count: 9 },
+            { Year: 2019, State: 'Minnesota', Count: 2 },
+            { Year: 2019, State: 'Mississippi', Count: 6 },
+            { Year: 2019, State: 'Missouri', Count: 18 },
+            { Year: 2019, State: 'Montana', Count: 2 },
+            { Year: 2019, State: 'Nebraska', Count: 1 },
+            { Year: 2019, State: 'Nevada', Count: 3 },
+            { Year: 2019, State: 'New Jersey', Count: 11 },
+            { Year: 2019, State: 'New Mexico', Count: 5 },
+            { Year: 2019, State: 'New York', Count: 9 },
+            { Year: 2019, State: 'North Carolina', Count: 10 },
+            { Year: 2019, State: 'Ohio', Count: 14 },
+            { Year: 2019, State: 'Oklahoma', Count: 4 },
+            { Year: 2019, State: 'Oregon', Count: 1 },
+            { Year: 2019, State: 'Pennsylvania', Count: 19 },
+            { Year: 2019, State: 'South Carolina', Count: 10 },
+            { Year: 2019, State: 'Tennessee', Count: 7 },
+            { Year: 2019, State: 'Texas', Count: 30 },
+            { Year: 2019, State: 'Virginia', Count: 10 },
+            { Year: 2019, State: 'Washington', Count: 4 },
+            { Year: 2019, State: 'Wisconsin', Count: 3 },
+            { Year: 2019, State: 'Wyoming', Count: 1 },
+            { Year: 2020, State: 'Alabama', Count: 11 },
+            { Year: 2020, State: 'Alaska', Count: 3 },
+            { Year: 2020, State: 'Arizona', Count: 4 },
+            { Year: 2020, State: 'Arkansas', Count: 13 },
+            { Year: 2020, State: 'California', Count: 39 },
+            { Year: 2020, State: 'Colorado', Count: 11 },
+            { Year: 2020, State: 'Connecticut', Count: 7 },
+            { Year: 2020, State: 'Delaware', Count: 3 },
+            { Year: 2020, State: 'District of Columbia', Count: 8 },
+            { Year: 2020, State: 'Florida', Count: 34 },
+            { Year: 2020, State: 'Georgia', Count: 17 },
+            { Year: 2020, State: 'Idaho', Count: 1 },
+            { Year: 2020, State: 'Illinois', Count: 68 },
+            { Year: 2020, State: 'Indiana', Count: 7 },
+            { Year: 2020, State: 'Iowa', Count: 4 },
+            { Year: 2020, State: 'Kansas', Count: 2 },
+            { Year: 2020, State: 'Kentucky', Count: 10 },
+            { Year: 2020, State: 'Louisiana', Count: 27 },
+            { Year: 2020, State: 'Maine', Count: 1 },
+            { Year: 2020, State: 'Maryland', Count: 18 },
+            { Year: 2020, State: 'Massachusetts', Count: 8 },
+            { Year: 2020, State: 'Michigan', Count: 21 },
+            { Year: 2020, State: 'Minnesota', Count: 6 },
+            { Year: 2020, State: 'Mississippi', Count: 17 },
+            { Year: 2020, State: 'Missouri', Count: 22 },
+            { Year: 2020, State: 'Nebraska', Count: 2 },
+            { Year: 2020, State: 'Nevada', Count: 4 },
+            { Year: 2020, State: 'New Jersey', Count: 12 },
+            { Year: 2020, State: 'New Mexico', Count: 3 },
+            { Year: 2020, State: 'New York', Count: 38 },
+            { Year: 2020, State: 'North Carolina', Count: 20 },
+            { Year: 2020, State: 'Ohio', Count: 25 },
+            { Year: 2020, State: 'Oklahoma', Count: 2 },
+            { Year: 2020, State: 'Oregon', Count: 2 },
+            { Year: 2020, State: 'Pennsylvania', Count: 34 },
+            { Year: 2020, State: 'South Carolina', Count: 22 },
+            { Year: 2020, State: 'South Dakota', Count: 1 },
+            { Year: 2020, State: 'Tennessee', Count: 19 },
+            { Year: 2020, State: 'Texas', Count: 34 },
+            { Year: 2020, State: 'Utah', Count: 1 },
+            { Year: 2020, State: 'Virginia', Count: 11 },
+            { Year: 2020, State: 'Washington', Count: 5 },
+            { Year: 2020, State: 'West Virginia', Count: 3 },
+            { Year: 2020, State: 'Wisconsin', Count: 10 },
+            { Year: 2021, State: 'Alabama', Count: 23 },
+            { Year: 2021, State: 'Alaska', Count: 1 },
+            { Year: 2021, State: 'Arizona', Count: 6 },
+            { Year: 2021, State: 'Arkansas', Count: 5 },
+            { Year: 2021, State: 'California', Count: 45 },
+            { Year: 2021, State: 'Colorado', Count: 13 },
+            { Year: 2021, State: 'Connecticut', Count: 2 },
+            { Year: 2021, State: 'Delaware', Count: 7 },
+            { Year: 2021, State: 'District of Columbia', Count: 16 },
+            { Year: 2021, State: 'Florida', Count: 31 },
+            { Year: 2021, State: 'Georgia', Count: 22 },
+            { Year: 2021, State: 'Idaho', Count: 1 },
+            { Year: 2021, State: 'Illinois', Count: 86 },
+            { Year: 2021, State: 'Indiana', Count: 14 },
+            { Year: 2021, State: 'Iowa', Count: 5 },
+            { Year: 2021, State: 'Kansas', Count: 2 },
+            { Year: 2021, State: 'Kentucky', Count: 4 },
+            { Year: 2021, State: 'Louisiana', Count: 32 },
+            { Year: 2021, State: 'Maryland', Count: 20 },
+            { Year: 2021, State: 'Massachusetts', Count: 4 },
+            { Year: 2021, State: 'Michigan', Count: 26 },
+            { Year: 2021, State: 'Minnesota', Count: 11 },
+            { Year: 2021, State: 'Mississippi', Count: 13 },
+            { Year: 2021, State: 'Missouri', Count: 17 },
+            { Year: 2021, State: 'Nebraska', Count: 1 },
+            { Year: 2021, State: 'Nevada', Count: 5 },
+            { Year: 2021, State: 'New Hampshire', Count: 1 },
+            { Year: 2021, State: 'New Jersey', Count: 14 },
+            { Year: 2021, State: 'New Mexico', Count: 1 },
+            { Year: 2021, State: 'New York', Count: 36 },
+            { Year: 2021, State: 'North Carolina', Count: 22 },
+            { Year: 2021, State: 'Ohio', Count: 32 },
+            { Year: 2021, State: 'Oklahoma', Count: 2 },
+            { Year: 2021, State: 'Oregon', Count: 7 },
+            { Year: 2021, State: 'Pennsylvania', Count: 35 },
+            { Year: 2021, State: 'Rhode Island', Count: 2 },
+            { Year: 2021, State: 'South Carolina', Count: 17 },
+            { Year: 2021, State: 'South Dakota', Count: 1 },
+            { Year: 2021, State: 'Tennessee', Count: 15 },
+            { Year: 2021, State: 'Texas', Count: 57 },
+            { Year: 2021, State: 'Utah', Count: 1 },
+            { Year: 2021, State: 'Virginia', Count: 16 },
+            { Year: 2021, State: 'Washington', Count: 7 },
+            { Year: 2021, State: 'West Virginia', Count: 1 },
+            { Year: 2021, State: 'Wisconsin', Count: 11 },
+            { Year: 2022, State: 'Alabama', Count: 16 },
+            { Year: 2022, State: 'Arizona', Count: 13 },
+            { Year: 2022, State: 'Arkansas', Count: 5 },
+            { Year: 2022, State: 'California', Count: 49 },
+            { Year: 2022, State: 'Colorado', Count: 13 },
+            { Year: 2022, State: 'Connecticut', Count: 3 },
+            { Year: 2022, State: 'Delaware', Count: 1 },
+            { Year: 2022, State: 'District of Columbia', Count: 9 },
+            { Year: 2022, State: 'Florida', Count: 31 },
+            { Year: 2022, State: 'Georgia', Count: 29 },
+            { Year: 2022, State: 'Illinois', Count: 57 },
+            { Year: 2022, State: 'Indiana', Count: 15 },
+            { Year: 2022, State: 'Iowa', Count: 2 },
+            { Year: 2022, State: 'Kansas', Count: 3 },
+            { Year: 2022, State: 'Kentucky', Count: 9 },
+            { Year: 2022, State: 'Louisiana', Count: 28 },
+            { Year: 2022, State: 'Maryland', Count: 19 },
+            { Year: 2022, State: 'Massachusetts', Count: 3 },
+            { Year: 2022, State: 'Michigan', Count: 25 },
+            { Year: 2022, State: 'Minnesota', Count: 12 },
+            { Year: 2022, State: 'Mississippi', Count: 14 },
+            { Year: 2022, State: 'Missouri', Count: 14 },
+            { Year: 2022, State: 'Nebraska', Count: 5 },
+            { Year: 2022, State: 'Nevada', Count: 5 },
+            { Year: 2022, State: 'New Jersey', Count: 9 },
+            { Year: 2022, State: 'New Mexico', Count: 4 },
+            { Year: 2022, State: 'New York', Count: 31 },
+            { Year: 2022, State: 'North Carolina', Count: 21 },
+            { Year: 2022, State: 'Ohio', Count: 19 },
+            { Year: 2022, State: 'Oklahoma', Count: 8 },
+            { Year: 2022, State: 'Oregon', Count: 6 },
+            { Year: 2022, State: 'Pennsylvania', Count: 34 },
+            { Year: 2022, State: 'South Carolina', Count: 20 },
+            { Year: 2022, State: 'Tennessee', Count: 17 },
+            { Year: 2022, State: 'Texas', Count: 50 },
+            { Year: 2022, State: 'Virginia', Count: 20 },
+            { Year: 2022, State: 'Washington', Count: 11 },
+            { Year: 2022, State: 'Wisconsin', Count: 16 },
+
+        ];
+
+        // 根据州进行分组
+        const stateDataMap = {};
+        for (const item of data) {
+            const state = item.State;
+            if (!stateDataMap[state]) {
+                stateDataMap[state] = [];
             }
+            stateDataMap[state].push(item);
+        }
 
-            // 数据填充操作
-            const data = [
+        // 填充xAxisData和customData
+        for (const state in stateDataMap) {
+            xAxisData.push(state); // 使用州的名称
+            var customVal = [xAxisData.length - 1]; // 使用当前xAxisData的长度作为索引
+            customData.push(customVal);
+            for (var j = 0; j < dataList.length; j++) {
+                var year = 2014 + j; // 起始年份为2014
+                var count = getDataByYearAndState(year, stateDataMap[state]); // 获取特定年份和州的数据
+                dataList[j].push(count);
+                customVal.push(count);
+            }
+        }
 
-                { Year: 2014, State: 'Alabama', Count: 2 },
-                { Year: 2014, State: 'Alaska', Count: 1 },
-                { Year: 2014, State: 'Arizona', Count: 1 },
-                { Year: 2014, State: 'Arkansas', Count: 2 },
-                { Year: 2014, State: 'California', Count: 41 },
-                { Year: 2014, State: 'Colorado', Count: 2 },
-                { Year: 2014, State: 'Connecticut', Count: 1 },
-                { Year: 2014, State: 'District of Columbia', Count: 6 },
-                { Year: 2014, State: 'Florida', Count: 17 },
-                { Year: 2014, State: 'Georgia', Count: 17 },
-                { Year: 2014, State: 'Illinois', Count: 26 },
-                { Year: 2014, State: 'Indiana', Count: 8 },
-                { Year: 2014, State: 'Kentucky', Count: 4 },
-                { Year: 2014, State: 'Louisiana', Count: 11 },
-                { Year: 2014, State: 'Maine', Count: 1 },
-                { Year: 2014, State: 'Maryland', Count: 1 },
-                { Year: 2014, State: 'Massachusetts', Count: 4 },
-                { Year: 2014, State: 'Michigan', Count: 10 },
-                { Year: 2014, State: 'Minnesota', Count: 1 },
-                { Year: 2014, State: 'Mississippi', Count: 5 },
-                { Year: 2014, State: 'Missouri', Count: 8 },
-                { Year: 2014, State: 'Nevada', Count: 4 },
-                { Year: 2014, State: 'New Jersey', Count: 6 },
-                { Year: 2014, State: 'New Mexico', Count: 1 },
-                { Year: 2014, State: 'New York', Count: 14 },
-                { Year: 2014, State: 'North Carolina', Count: 3 },
-                { Year: 2014, State: 'Ohio', Count: 7 },
-                { Year: 2014, State: 'Oklahoma', Count: 2 },
-                { Year: 2014, State: 'Oregon', Count: 2 },
-                { Year: 2014, State: 'Pennsylvania', Count: 10 },
-                { Year: 2014, State: 'Rhode Island', Count: 1 },
-                { Year: 2014, State: 'South Carolina', Count: 7 },
-                { Year: 2014, State: 'South Dakota', Count: 1 },
-                { Year: 2014, State: 'Tennessee', Count: 13 },
-                { Year: 2014, State: 'Texas', Count: 17 },
-                { Year: 2014, State: 'Utah', Count: 2 },
-                { Year: 2014, State: 'Virginia', Count: 8 },
-                { Year: 2014, State: 'Washington', Count: 3 },
-                { Year: 2014, State: 'Wisconsin', Count: 2 },
-                { Year: 2015, State: 'Alabama', Count: 4 },
-                { Year: 2015, State: 'Arizona', Count: 6 },
-                { Year: 2015, State: 'Arkansas', Count: 2 },
-                { Year: 2015, State: 'California', Count: 27 },
-                { Year: 2015, State: 'Colorado', Count: 3 },
-                { Year: 2015, State: 'Connecticut', Count: 2 },
-                { Year: 2015, State: 'Delaware', Count: 1 },
-                { Year: 2015, State: 'District of Columbia', Count: 3 },
-                { Year: 2015, State: 'Florida', Count: 26 },
-                { Year: 2015, State: 'Georgia', Count: 20 },
-                { Year: 2015, State: 'Illinois', Count: 25 },
-                { Year: 2015, State: 'Indiana', Count: 10 },
-                { Year: 2015, State: 'Iowa', Count: 2 },
-                { Year: 2015, State: 'Kansas', Count: 1 },
-                { Year: 2015, State: 'Kentucky', Count: 4 },
-                { Year: 2015, State: 'Louisiana', Count: 15 },
-                { Year: 2015, State: 'Maryland', Count: 13 },
-                { Year: 2015, State: 'Massachusetts', Count: 5 },
-                { Year: 2015, State: 'Michigan', Count: 11 },
-                { Year: 2015, State: 'Minnesota', Count: 5 },
-                { Year: 2015, State: 'Mississippi', Count: 2 },
-                { Year: 2015, State: 'Missouri', Count: 13 },
-                { Year: 2015, State: 'Montana', Count: 1 },
-                { Year: 2015, State: 'Nebraska', Count: 3 },
-                { Year: 2015, State: 'Nevada', Count: 1 },
-                { Year: 2015, State: 'New Jersey', Count: 9 },
-                { Year: 2015, State: 'New Mexico', Count: 2 },
-                { Year: 2015, State: 'New York', Count: 21 },
-                { Year: 2015, State: 'North Carolina', Count: 12 },
-                { Year: 2015, State: 'Ohio', Count: 14 },
-                { Year: 2015, State: 'Oklahoma', Count: 5 },
-                { Year: 2015, State: 'Oregon', Count: 2 },
-                { Year: 2015, State: 'Pennsylvania', Count: 14 },
-                { Year: 2015, State: 'Rhode Island', Count: 1 },
-                { Year: 2015, State: 'South Carolina', Count: 11 },
-                { Year: 2015, State: 'South Dakota', Count: 1 },
-                { Year: 2015, State: 'Tennessee', Count: 11 },
-                { Year: 2015, State: 'Texas', Count: 18 },
-                { Year: 2015, State: 'Vermont', Count: 1 },
-                { Year: 2015, State: 'Virginia', Count: 5 },
-                { Year: 2015, State: 'Washington', Count: 1 },
-                { Year: 2015, State: 'Wisconsin', Count: 3 },
-                { Year: 2016, State: 'Alabama', Count: 15 },
-                { Year: 2016, State: 'Arizona', Count: 4 },
-                { Year: 2016, State: 'Arkansas', Count: 3 },
-                { Year: 2016, State: 'California', Count: 46 },
-                { Year: 2016, State: 'Colorado', Count: 4 },
-                { Year: 2016, State: 'Connecticut', Count: 6 },
-                { Year: 2016, State: 'Delaware', Count: 2 },
-                { Year: 2016, State: 'District of Columbia', Count: 5 },
-                { Year: 2016, State: 'Florida', Count: 30 },
-                { Year: 2016, State: 'Georgia', Count: 17 },
-                { Year: 2016, State: 'Illinois', Count: 42 },
-                { Year: 2016, State: 'Indiana', Count: 8 },
-                { Year: 2016, State: 'Kansas', Count: 5 },
-                { Year: 2016, State: 'Kentucky', Count: 2 },
-                { Year: 2016, State: 'Louisiana', Count: 14 },
-                { Year: 2016, State: 'Maryland', Count: 11 },
-                { Year: 2016, State: 'Massachusetts', Count: 3 },
-                { Year: 2016, State: 'Michigan', Count: 11 },
-                { Year: 2016, State: 'Minnesota', Count: 5 },
-                { Year: 2016, State: 'Mississippi', Count: 6 },
-                { Year: 2016, State: 'Missouri', Count: 10 },
-                { Year: 2016, State: 'Nevada', Count: 3 },
-                { Year: 2016, State: 'New Jersey', Count: 9 },
-                { Year: 2016, State: 'New Mexico', Count: 4 },
-                { Year: 2016, State: 'New York', Count: 15 },
-                { Year: 2016, State: 'North Carolina', Count: 9 },
-                { Year: 2016, State: 'Ohio', Count: 11 },
-                { Year: 2016, State: 'Oklahoma', Count: 1 },
-                { Year: 2016, State: 'Oregon', Count: 2 },
-                { Year: 2016, State: 'Pennsylvania', Count: 10 },
-                { Year: 2016, State: 'South Carolina', Count: 5 },
-                { Year: 2016, State: 'Tennessee', Count: 12 },
-                { Year: 2016, State: 'Texas', Count: 31 },
-                { Year: 2016, State: 'Virginia', Count: 11 },
-                { Year: 2016, State: 'Washington', Count: 8 },
-                { Year: 2016, State: 'West Virginia', Count: 1 },
-                { Year: 2016, State: 'Wisconsin', Count: 2 },
-                { Year: 2017, State: 'Alabama', Count: 7 },
-                { Year: 2017, State: 'Arizona', Count: 5 },
-                { Year: 2017, State: 'Arkansas', Count: 3 },
-                { Year: 2017, State: 'California', Count: 38 },
-                { Year: 2017, State: 'Colorado', Count: 2 },
-                { Year: 2017, State: 'Connecticut', Count: 2 },
-                { Year: 2017, State: 'Delaware', Count: 1 },
-                { Year: 2017, State: 'District of Columbia', Count: 5 },
-                { Year: 2017, State: 'Florida', Count: 24 },
-                { Year: 2017, State: 'Georgia', Count: 9 },
-                { Year: 2017, State: 'Illinois', Count: 37 },
-                { Year: 2017, State: 'Indiana', Count: 7 },
-                { Year: 2017, State: 'Iowa', Count: 2 },
-                { Year: 2017, State: 'Kansas', Count: 4 },
-                { Year: 2017, State: 'Kentucky', Count: 6 },
-                { Year: 2017, State: 'Louisiana', Count: 15 },
-                { Year: 2017, State: 'Maine', Count: 1 },
-                { Year: 2017, State: 'Maryland', Count: 8 },
-                { Year: 2017, State: 'Massachusetts', Count: 1 },
-                { Year: 2017, State: 'Michigan', Count: 8 },
-                { Year: 2017, State: 'Minnesota', Count: 4 },
-                { Year: 2017, State: 'Mississippi', Count: 13 },
-                { Year: 2017, State: 'Missouri', Count: 10 },
-                { Year: 2017, State: 'Montana', Count: 1 },
-                { Year: 2017, State: 'Nevada', Count: 2 },
-                { Year: 2017, State: 'New Jersey', Count: 13 },
-                { Year: 2017, State: 'New Mexico', Count: 2 },
-                { Year: 2017, State: 'New York', Count: 13 },
-                { Year: 2017, State: 'North Carolina', Count: 7 },
-                { Year: 2017, State: 'Ohio', Count: 21 },
-                { Year: 2017, State: 'Oklahoma', Count: 1 },
-                { Year: 2017, State: 'Pennsylvania', Count: 16 },
-                { Year: 2017, State: 'South Carolina', Count: 7 },
-                { Year: 2017, State: 'Tennessee', Count: 14 },
-                { Year: 2017, State: 'Texas', Count: 21 },
-                { Year: 2017, State: 'Utah', Count: 1 },
-                { Year: 2017, State: 'Virginia', Count: 12 },
-                { Year: 2017, State: 'Washington', Count: 3 },
-                { Year: 2017, State: 'Wisconsin', Count: 2 },
-                { Year: 2018, State: 'Alabama', Count: 14 },
-                { Year: 2018, State: 'Arizona', Count: 2 },
-                { Year: 2018, State: 'Arkansas', Count: 6 },
-                { Year: 2018, State: 'California', Count: 35 },
-                { Year: 2018, State: 'Colorado', Count: 8 },
-                { Year: 2018, State: 'Connecticut', Count: 2 },
-                { Year: 2018, State: 'Delaware', Count: 1 },
-                { Year: 2018, State: 'District of Columbia', Count: 6 },
-                { Year: 2018, State: 'Florida', Count: 30 },
-                { Year: 2018, State: 'Georgia', Count: 8 },
-                { Year: 2018, State: 'Illinois', Count: 35 },
-                { Year: 2018, State: 'Indiana', Count: 6 },
-                { Year: 2018, State: 'Kansas', Count: 2 },
-                { Year: 2018, State: 'Kentucky', Count: 4 },
-                { Year: 2018, State: 'Louisiana', Count: 13 },
-                { Year: 2018, State: 'Maryland', Count: 9 },
-                { Year: 2018, State: 'Massachusetts', Count: 1 },
-                { Year: 2018, State: 'Michigan', Count: 8 },
-                { Year: 2018, State: 'Minnesota', Count: 3 },
-                { Year: 2018, State: 'Mississippi', Count: 3 },
-                { Year: 2018, State: 'Missouri', Count: 14 },
-                { Year: 2018, State: 'Nebraska', Count: 3 },
-                { Year: 2018, State: 'Nevada', Count: 4 },
-                { Year: 2018, State: 'New Jersey', Count: 10 },
-                { Year: 2018, State: 'New Mexico', Count: 2 },
-                { Year: 2018, State: 'New York', Count: 13 },
-                { Year: 2018, State: 'North Carolina', Count: 10 },
-                { Year: 2018, State: 'Ohio', Count: 11 },
-                { Year: 2018, State: 'Oklahoma', Count: 5 },
-                { Year: 2018, State: 'Pennsylvania', Count: 19 },
-                { Year: 2018, State: 'South Carolina', Count: 4 },
-                { Year: 2018, State: 'Tennessee', Count: 18 },
-                { Year: 2018, State: 'Texas', Count: 15 },
-                { Year: 2018, State: 'Utah', Count: 1 },
-                { Year: 2018, State: 'Virginia', Count: 4 },
-                { Year: 2018, State: 'Washington', Count: 3 },
-                { Year: 2018, State: 'Wisconsin', Count: 4 },
-                { Year: 2019, State: 'Alabama', Count: 12 },
-                { Year: 2019, State: 'Arizona', Count: 5 },
-                { Year: 2019, State: 'Arkansas', Count: 5 },
-                { Year: 2019, State: 'California', Count: 49 },
-                { Year: 2019, State: 'Colorado', Count: 4 },
-                { Year: 2019, State: 'Connecticut', Count: 3 },
-                { Year: 2019, State: 'Delaware', Count: 2 },
-                { Year: 2019, State: 'District of Columbia', Count: 7 },
-                { Year: 2019, State: 'Florida', Count: 15 },
-                { Year: 2019, State: 'Georgia', Count: 19 },
-                { Year: 2019, State: 'Illinois', Count: 41 },
-                { Year: 2019, State: 'Indiana', Count: 10 },
-                { Year: 2019, State: 'Iowa', Count: 3 },
-                { Year: 2019, State: 'Kansas', Count: 4 },
-                { Year: 2019, State: 'Kentucky', Count: 5 },
-                { Year: 2019, State: 'Louisiana', Count: 26 },
-                { Year: 2019, State: 'Maryland', Count: 21 },
-                { Year: 2019, State: 'Massachusetts', Count: 5 },
-                { Year: 2019, State: 'Michigan', Count: 9 },
-                { Year: 2019, State: 'Minnesota', Count: 2 },
-                { Year: 2019, State: 'Mississippi', Count: 6 },
-                { Year: 2019, State: 'Missouri', Count: 18 },
-                { Year: 2019, State: 'Montana', Count: 2 },
-                { Year: 2019, State: 'Nebraska', Count: 1 },
-                { Year: 2019, State: 'Nevada', Count: 3 },
-                { Year: 2019, State: 'New Jersey', Count: 11 },
-                { Year: 2019, State: 'New Mexico', Count: 5 },
-                { Year: 2019, State: 'New York', Count: 9 },
-                { Year: 2019, State: 'North Carolina', Count: 10 },
-                { Year: 2019, State: 'Ohio', Count: 14 },
-                { Year: 2019, State: 'Oklahoma', Count: 4 },
-                { Year: 2019, State: 'Oregon', Count: 1 },
-                { Year: 2019, State: 'Pennsylvania', Count: 19 },
-                { Year: 2019, State: 'South Carolina', Count: 10 },
-                { Year: 2019, State: 'Tennessee', Count: 7 },
-                { Year: 2019, State: 'Texas', Count: 30 },
-                { Year: 2019, State: 'Virginia', Count: 10 },
-                { Year: 2019, State: 'Washington', Count: 4 },
-                { Year: 2019, State: 'Wisconsin', Count: 3 },
-                { Year: 2019, State: 'Wyoming', Count: 1 },
-                { Year: 2020, State: 'Alabama', Count: 11 },
-                { Year: 2020, State: 'Alaska', Count: 3 },
-                { Year: 2020, State: 'Arizona', Count: 4 },
-                { Year: 2020, State: 'Arkansas', Count: 13 },
-                { Year: 2020, State: 'California', Count: 39 },
-                { Year: 2020, State: 'Colorado', Count: 11 },
-                { Year: 2020, State: 'Connecticut', Count: 7 },
-                { Year: 2020, State: 'Delaware', Count: 3 },
-                { Year: 2020, State: 'District of Columbia', Count: 8 },
-                { Year: 2020, State: 'Florida', Count: 34 },
-                { Year: 2020, State: 'Georgia', Count: 17 },
-                { Year: 2020, State: 'Idaho', Count: 1 },
-                { Year: 2020, State: 'Illinois', Count: 68 },
-                { Year: 2020, State: 'Indiana', Count: 7 },
-                { Year: 2020, State: 'Iowa', Count: 4 },
-                { Year: 2020, State: 'Kansas', Count: 2 },
-                { Year: 2020, State: 'Kentucky', Count: 10 },
-                { Year: 2020, State: 'Louisiana', Count: 27 },
-                { Year: 2020, State: 'Maine', Count: 1 },
-                { Year: 2020, State: 'Maryland', Count: 18 },
-                { Year: 2020, State: 'Massachusetts', Count: 8 },
-                { Year: 2020, State: 'Michigan', Count: 21 },
-                { Year: 2020, State: 'Minnesota', Count: 6 },
-                { Year: 2020, State: 'Mississippi', Count: 17 },
-                { Year: 2020, State: 'Missouri', Count: 22 },
-                { Year: 2020, State: 'Nebraska', Count: 2 },
-                { Year: 2020, State: 'Nevada', Count: 4 },
-                { Year: 2020, State: 'New Jersey', Count: 12 },
-                { Year: 2020, State: 'New Mexico', Count: 3 },
-                { Year: 2020, State: 'New York', Count: 38 },
-                { Year: 2020, State: 'North Carolina', Count: 20 },
-                { Year: 2020, State: 'Ohio', Count: 25 },
-                { Year: 2020, State: 'Oklahoma', Count: 2 },
-                { Year: 2020, State: 'Oregon', Count: 2 },
-                { Year: 2020, State: 'Pennsylvania', Count: 34 },
-                { Year: 2020, State: 'South Carolina', Count: 22 },
-                { Year: 2020, State: 'South Dakota', Count: 1 },
-                { Year: 2020, State: 'Tennessee', Count: 19 },
-                { Year: 2020, State: 'Texas', Count: 34 },
-                { Year: 2020, State: 'Utah', Count: 1 },
-                { Year: 2020, State: 'Virginia', Count: 11 },
-                { Year: 2020, State: 'Washington', Count: 5 },
-                { Year: 2020, State: 'West Virginia', Count: 3 },
-                { Year: 2020, State: 'Wisconsin', Count: 10 },
-                { Year: 2021, State: 'Alabama', Count: 23 },
-                { Year: 2021, State: 'Alaska', Count: 1 },
-                { Year: 2021, State: 'Arizona', Count: 6 },
-                { Year: 2021, State: 'Arkansas', Count: 5 },
-                { Year: 2021, State: 'California', Count: 45 },
-                { Year: 2021, State: 'Colorado', Count: 13 },
-                { Year: 2021, State: 'Connecticut', Count: 2 },
-                { Year: 2021, State: 'Delaware', Count: 7 },
-                { Year: 2021, State: 'District of Columbia', Count: 16 },
-                { Year: 2021, State: 'Florida', Count: 31 },
-                { Year: 2021, State: 'Georgia', Count: 22 },
-                { Year: 2021, State: 'Idaho', Count: 1 },
-                { Year: 2021, State: 'Illinois', Count: 86 },
-                { Year: 2021, State: 'Indiana', Count: 14 },
-                { Year: 2021, State: 'Iowa', Count: 5 },
-                { Year: 2021, State: 'Kansas', Count: 2 },
-                { Year: 2021, State: 'Kentucky', Count: 4 },
-                { Year: 2021, State: 'Louisiana', Count: 32 },
-                { Year: 2021, State: 'Maryland', Count: 20 },
-                { Year: 2021, State: 'Massachusetts', Count: 4 },
-                { Year: 2021, State: 'Michigan', Count: 26 },
-                { Year: 2021, State: 'Minnesota', Count: 11 },
-                { Year: 2021, State: 'Mississippi', Count: 13 },
-                { Year: 2021, State: 'Missouri', Count: 17 },
-                { Year: 2021, State: 'Nebraska', Count: 1 },
-                { Year: 2021, State: 'Nevada', Count: 5 },
-                { Year: 2021, State: 'New Hampshire', Count: 1 },
-                { Year: 2021, State: 'New Jersey', Count: 14 },
-                { Year: 2021, State: 'New Mexico', Count: 1 },
-                { Year: 2021, State: 'New York', Count: 36 },
-                { Year: 2021, State: 'North Carolina', Count: 22 },
-                { Year: 2021, State: 'Ohio', Count: 32 },
-                { Year: 2021, State: 'Oklahoma', Count: 2 },
-                { Year: 2021, State: 'Oregon', Count: 7 },
-                { Year: 2021, State: 'Pennsylvania', Count: 35 },
-                { Year: 2021, State: 'Rhode Island', Count: 2 },
-                { Year: 2021, State: 'South Carolina', Count: 17 },
-                { Year: 2021, State: 'South Dakota', Count: 1 },
-                { Year: 2021, State: 'Tennessee', Count: 15 },
-                { Year: 2021, State: 'Texas', Count: 57 },
-                { Year: 2021, State: 'Utah', Count: 1 },
-                { Year: 2021, State: 'Virginia', Count: 16 },
-                { Year: 2021, State: 'Washington', Count: 7 },
-                { Year: 2021, State: 'West Virginia', Count: 1 },
-                { Year: 2021, State: 'Wisconsin', Count: 11 },
-                { Year: 2022, State: 'Alabama', Count: 16 },
-                { Year: 2022, State: 'Arizona', Count: 13 },
-                { Year: 2022, State: 'Arkansas', Count: 5 },
-                { Year: 2022, State: 'California', Count: 49 },
-                { Year: 2022, State: 'Colorado', Count: 13 },
-                { Year: 2022, State: 'Connecticut', Count: 3 },
-                { Year: 2022, State: 'Delaware', Count: 1 },
-                { Year: 2022, State: 'District of Columbia', Count: 9 },
-                { Year: 2022, State: 'Florida', Count: 31 },
-                { Year: 2022, State: 'Georgia', Count: 29 },
-                { Year: 2022, State: 'Illinois', Count: 57 },
-                { Year: 2022, State: 'Indiana', Count: 15 },
-                { Year: 2022, State: 'Iowa', Count: 2 },
-                { Year: 2022, State: 'Kansas', Count: 3 },
-                { Year: 2022, State: 'Kentucky', Count: 9 },
-                { Year: 2022, State: 'Louisiana', Count: 28 },
-                { Year: 2022, State: 'Maryland', Count: 19 },
-                { Year: 2022, State: 'Massachusetts', Count: 3 },
-                { Year: 2022, State: 'Michigan', Count: 25 },
-                { Year: 2022, State: 'Minnesota', Count: 12 },
-                { Year: 2022, State: 'Mississippi', Count: 14 },
-                { Year: 2022, State: 'Missouri', Count: 14 },
-                { Year: 2022, State: 'Nebraska', Count: 5 },
-                { Year: 2022, State: 'Nevada', Count: 5 },
-                { Year: 2022, State: 'New Jersey', Count: 9 },
-                { Year: 2022, State: 'New Mexico', Count: 4 },
-                { Year: 2022, State: 'New York', Count: 31 },
-                { Year: 2022, State: 'North Carolina', Count: 21 },
-                { Year: 2022, State: 'Ohio', Count: 19 },
-                { Year: 2022, State: 'Oklahoma', Count: 8 },
-                { Year: 2022, State: 'Oregon', Count: 6 },
-                { Year: 2022, State: 'Pennsylvania', Count: 34 },
-                { Year: 2022, State: 'South Carolina', Count: 20 },
-                { Year: 2022, State: 'Tennessee', Count: 17 },
-                { Year: 2022, State: 'Texas', Count: 50 },
-                { Year: 2022, State: 'Virginia', Count: 20 },
-                { Year: 2022, State: 'Washington', Count: 11 },
-                { Year: 2022, State: 'Wisconsin', Count: 16 },
-
-            ];
-
-            // 根据州进行分组
-            const stateDataMap = {};
-            for (const item of data) {
-                const state = item.State;
-                if (!stateDataMap[state]) {
-                    stateDataMap[state] = [];
+        // 根据年份和州获取数据的辅助函数
+        function getDataByYearAndState(year, stateData) {
+            for (var i = 0; i < stateData.length; i++) {
+                if (stateData[i].Year === year) {
+                    return stateData[i].Count;
                 }
-                stateDataMap[state].push(item);
             }
+            return 0; // 如果数据不存在，则默认为0
+        }
 
-            // 填充xAxisData和customData
-            for (const state in stateDataMap) {
-                xAxisData.push(state); // 使用州的名称
-                var customVal = [xAxisData.length - 1]; // 使用当前xAxisData的长度作为索引
-                customData.push(customVal);
-                for (var j = 0; j < dataList.length; j++) {
-                    var year = 2014 + j; // 起始年份为2014
-                    var count = getDataByYearAndState(year, stateDataMap[state]); // 获取特定年份和州的数据
-                    dataList[j].push(count);
-                    customVal.push(count);
+        option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: legendData
+            },
+            dataZoom: [
+                {
+                    type: 'slider',
+                    start: 50,
+                    end: 70
+                },
+                {
+                    type: 'inside',
+                    start: 50,
+                    end: 70
                 }
-            }
-
-            // 根据年份和州获取数据的辅助函数
-            function getDataByYearAndState(year, stateData) {
-                for (var i = 0; i < stateData.length; i++) {
-                    if (stateData[i].Year === year) {
-                        return stateData[i].Count;
-                    }
-                }
-                return 0; // 如果数据不存在，则默认为0
-            }
-
-            option = {
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data: legendData
-                },
-                dataZoom: [
-                    {
-                        type: 'slider',
-                        start: 50,
-                        end: 70
-                    },
-                    {
-                        type: 'inside',
-                        start: 50,
-                        end: 70
-                    }
-                ],
-                xAxis: {
-                    data: xAxisData
-                },
-                yAxis: {},
-                series: [
-                    {
-                        type: 'custom',
-                        name: 'trend',
-                        renderItem: function (params, api) {
-                            var xValue = api.value(0);
-                            var currentSeriesIndices = api.currentSeriesIndices();
-                            var barLayout = api.barLayout({
-                                barGap: '30%',
-                                barCategoryGap: '20%',
-                                count: currentSeriesIndices.length - 1
-                            });
-                            var points = [];
-                            for (var i = 0; i < currentSeriesIndices.length; i++) {
-                                var seriesIndex = currentSeriesIndices[i];
-                                if (seriesIndex !== params.seriesIndex) {
-                                    var point = api.coord([xValue, api.value(seriesIndex)]);
-                                    point[0] += barLayout[i - 1].offsetCenter;
-                                    point[1] -= 20;
-                                    points.push(point);
-                                }
+            ],
+            xAxis: {
+                data: xAxisData
+            },
+            yAxis: {},
+            series: [
+                {
+                    type: 'custom',
+                    name: 'trend',
+                    renderItem: function (params, api) {
+                        var xValue = api.value(0);
+                        var currentSeriesIndices = api.currentSeriesIndices();
+                        var barLayout = api.barLayout({
+                            barGap: '30%',
+                            barCategoryGap: '20%',
+                            count: currentSeriesIndices.length - 1
+                        });
+                        var points = [];
+                        for (var i = 0; i < currentSeriesIndices.length; i++) {
+                            var seriesIndex = currentSeriesIndices[i];
+                            if (seriesIndex !== params.seriesIndex) {
+                                var point = api.coord([xValue, api.value(seriesIndex)]);
+                                point[0] += barLayout[i - 1].offsetCenter;
+                                point[1] -= 20;
+                                points.push(point);
                             }
-                            var style = api.style({
-                                stroke: api.visual('color'),
-                                fill: 'none'
-                            });
-                            return {
-                                type: 'polyline',
-                                shape: {
-                                    points: points
-                                },
-                                style: style
-                            };
-                        },
-                        itemStyle: {
-                            borderWidth: 2
-                        },
-                        encode: {
-                            x: 0,
-                            y: encodeY
-                        },
-                        data: customData,
-                        z: 100
-                    },
-                    ...dataList.map(function (data, index) {
+                        }
+                        var style = api.style({
+                            stroke: api.visual('color'),
+                            fill: 'none'
+                        });
                         return {
-                            type: 'bar',
-                            animation: false,
-                            name: legendData[index + 1],
-                            itemStyle: {
-                                opacity: 0.5
+                            type: 'polyline',
+                            shape: {
+                                points: points
                             },
-                            data: data
+                            style: style
                         };
-                    })
-                ]
-            };
+                    },
+                    itemStyle: {
+                        borderWidth: 2
+                    },
+                    encode: {
+                        x: 0,
+                        y: encodeY
+                    },
+                    data: customData,
+                    z: 100
+                },
+                ...dataList.map(function (data, index) {
+                    return {
+                        type: 'bar',
+                        animation: false,
+                        name: legendData[index + 1],
+                        itemStyle: {
+                            opacity: 0.5
+                        },
+                        data: data
+                    };
+                })
+            ]
+        };
 
-            option && myChart.setOption(option);
+        option && myChart.setOption(option);
 
-        </script>
+    </script>
 
 </body>
 
