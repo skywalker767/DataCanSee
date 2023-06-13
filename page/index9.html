@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>动态折线图</title>
+    <title>ECharts Map Example</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
@@ -51,7 +51,7 @@
         });
     </script>
 
-    <div id="main" style="width: 800px; height: 400px;"></div>
+    <div id="main" style="width: 1000px; height: 600px;"></div>
     <script>
         var ROOT_PATH = 'https://echarts.apache.org/examples';
 
@@ -59,7 +59,7 @@
         var myChart = echarts.init(chartDom);
         var option;
 
-        $.get('../static/json/data.json', function (_rawData) {
+        $.get('../static/json/life-expectancy-table.json', function (_rawData) {
             run(_rawData);
         });
 
@@ -80,7 +80,7 @@
                         config: {
                             and: [
                                 { dimension: 'Year', gte: 2014 },
-                                { dimension: 'Country', '=': country }
+                                { dimension: 'State', '=': country }
                             ]
                         }
                     }
@@ -105,7 +105,7 @@
                     encode: {
                         x: 'Year',
                         y: 'Count',
-                        label: ['Country', 'Count'],
+                        label: ['State', 'Count'],
                         itemName: 'Year',
                         tooltip: ['伤亡']
                     }
