@@ -47,7 +47,9 @@
     <div class="btn-container">
         <button id="toggleButton" class="btn" style="position: fixed;top: 90%;">Change</button>
     </div>
-    <button id="toggleMinAngleButton">切换最小角度限制</button>
+    <button id="toggleLegendButton">切换图例显示</button>
+
+
     <script>
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
@@ -163,13 +165,31 @@
             myChart.setOption(option);  // 使用新的配置选项重新渲染图表
         });
 
-        var isMinAngleSet = false;  // 初始设置为无最小角度限制
+        var isSmallValueLegendHidden = false;  // 初始设置为显示所有图例
 
-        document.getElementById('toggleMinAngleButton').addEventListener('click', function () {
-            isMinAngleSet = !isMinAngleSet;  // 切换标识
-            option.series[0].minAngle = isMinAngleSet ? 8 : 0;  // 根据标识设置minAngle的值
-            myChart.setOption(option);  // 使用新的配置选项重新渲染图表
+        document.getElementById('toggleLegendButton').addEventListener('click', function () {
+            isSmallValueLegendHidden = !isSmallValueLegendHidden;  // 切换标识
+            var newLegendData = [];
+            var newSeriesData = [];
+
+            if (isSmallValueLegendHidden) {
+                // 如果数据项的 value 小于 3，则从 legendData 和 seriesData 中删除该项
+                for (var i = 0; i < data.legendData.length; i++) {
+                    if (data.seriesData[i].value >= 10) {
+                        newLegendData.push(data.legendData[i]);
+                        newSeriesData.push(data.seriesData[i]);
+                    }
+                }
+            } else {
+                newLegendData = data.legendData;
+                newSeriesData = data.seriesData;
+            }
+
+            option.legend.data = newLegendData;
+            option.series[0].data = newSeriesData;
+            myChart.setOption(option, true);  // 使用新的配置选项重新渲染图表
         });
+
 
         option && myChart.setOption(option);
     </script>
