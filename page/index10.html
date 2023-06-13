@@ -41,8 +41,12 @@
             xhr.send();
         });
     </script>
+    <!-- <button id="toggleButton">切换图表模式</button> -->
 
     <div id="main" style="width: 1200px; height: 600px;"></div>
+    <div class="btn-container">
+        <button id="toggleButton" class="btn" style="position: fixed;top: 90%;">Change</button>
+    </div>
     <script>
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
@@ -150,6 +154,13 @@
                 seriesData: seriesData
             };
         }
+        var isRoseTypeRadius = true;  // 初始设置为南丁格尔玫瑰图模式
+
+        document.getElementById('toggleButton').addEventListener('click', function () {
+            isRoseTypeRadius = !isRoseTypeRadius;  // 切换标识
+            option.series[0].roseType = isRoseTypeRadius ? 'radius' : undefined;  // 根据标识设置roseType的值
+            myChart.setOption(option);  // 使用新的配置选项重新渲染图表
+        });
 
         option && myChart.setOption(option);
     </script>
