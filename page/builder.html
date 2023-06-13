@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <title>动态折线图</title>
+    <title>导航</title>
     <link rel="stylesheet" href="../static/css/btn.css">
     <link rel="stylesheet" href="../static/css/style3.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
@@ -14,13 +13,42 @@
     <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
     <link rel="shortcut icon" href="favicon.ico" />
     <style>
-        #main {
-            width: 800px;
-            height: 600px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 60vh;
+        }
+
+        .navbar-container h1,
+        .navbar-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            /* Adjust this value to increase or decrease the space */
+        }
+
+        .navbar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .img-container img {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .img-container img:hover {
+            background-color: #eee;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .img-container p {
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -28,7 +56,6 @@
 <body>
     <header>
         <li class="logo" alt="logo"><a href="../index.html">数据可视化</a></li>
-
         <nav>
             <ul class="nav_links">
                 <li><a href="builder.html">首页</a></li>
@@ -42,8 +69,54 @@
             </ul>
         </nav>
         <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
-
     </header>
+    <div class="navbar-container">
+        <h1>美国枪支暴力数据可视化</h1>
+        <h2>图表目录</h2>
+        <div class="navbar">
+            <div class="img-container">
+                <a href="#"><img src="https://echarts.apache.org/zh/images/builder/chart/heatmap.svg?_v_=20200710_1"
+                        alt="Image 1"></a>
+                <p>图片1</p>
+            </div>
+            <div class="img-container">
+                <a href="#"><img
+                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        alt="Image 2"></a>
+                <p>图片2</p>
+            </div>
+            <div class="img-container">
+                <a href="#"><img
+                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        alt="Image 3"></a>
+                <p>图片3</p>
+            </div>
+            <div class="img-container">
+                <a href="#"><img
+                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        alt="Image 4"></a>
+                <p>图片4</p>
+            </div>
+            <div class="img-container">
+                <a href="#"><img
+                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        alt="Image 5"></a>
+                <p>图片5</p>
+            </div>
+            <div class="img-container">
+                <a href="#"><img
+                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        alt="Image 6"></a>
+                <p>图片6</p>
+            </div>
+            <div class="img-container">
+                <a href="#"><img
+                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        alt="Image 7"></a>
+                <p>图片7</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
