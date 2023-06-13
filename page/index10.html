@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>ECharts Map Example</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>饼图</title>
+    <link rel="stylesheet" href="../static/css/btn.css">
+    <link rel="stylesheet" href="../static/css/style3.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
-
+    <link rel="shortcut icon" href="favicon.ico" />
     <style>
         #main {
             width: 800px;
@@ -21,178 +25,173 @@
     </style>
 </head>
 
-
 <body>
-    <div id="navbar-container">
-        <!-- 导航栏 -->
-    </div>
+    <header>
+        <li class="logo" alt="logo">数据可视化</li>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="retu2.html">热力图</a></li>
+                <li><a href="index9.html">动态折线图</a></li>
+                <li><a href="index6.html">柱状图</a></li>
+                <li><a href="index3.html">折线图</a></li>
+                <li><a href="index10.html">饼图</a></li>
+                <li><a href="index8.html">堆叠图</li>
+                <li><a href="index13.html">趋势图</li>
+            </ul>
+        </nav>
+        <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
+        </head>
+        <div id="main" style="width: 800px; height: 400px;"></div>
+        <div class="btn-container">
+            <button id="toggleButton" class="btn" style="position: fixed;top: 90%;">Change</button>
+        </div>
 
-    <script>
-        // 使用 JavaScript 加载导航栏内容
-        window.addEventListener('DOMContentLoaded', function () {
-            var navbarContainer = document.getElementById('navbar-container');
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', './navgeo.html', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    navbarContainer.innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        });
-    </script>
-    <!-- <button id="toggleButton">切换图表模式</button> -->
+        <button id="toggleLegendButton">切换图例显示</button>
 
-    <div id="main" style="width: 1200px; height: 600px;"></div>
-    <div class="btn-container">
-        <button id="toggleButton" class="btn" style="position: fixed;top: 90%;">Change</button>
-    </div>
-    <button id="toggleLegendButton">切换图例显示</button>
+        <script>
+            var chartDom = document.getElementById('main');
+            var myChart = echarts.init(chartDom);
+            var option;
 
+            const data = genData(50);
+            option = {
+                title: {
+                    text: '2014年-2022年各类情况死亡或受伤人数统计',
+                    sublink: 'https://www.gunviolencearchive.org/reports',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b} : {c} ({d}%)'
+                },
+                legend: {
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 10,
+                    top: 50,
+                    bottom: 20,
+                    data: data.legendData
+                },
+                series: [
 
-    <script>
-        var chartDom = document.getElementById('main');
-        var myChart = echarts.init(chartDom);
-        var option;
+                    {
+                        name: '类别',
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['33%', '50%'],
+                        data: data.seriesData,
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        },
+                        colorStops: [{
+                            offset: 0, color: 'red' // 0% 处的颜色
+                        }, {
+                            offset: 1, color: 'blue' // 100% 处的颜色
+                        }],
+                        // roseType: "",
+                        // avoidLabelOverlap: true,
 
-        const data = genData(50);
-        option = {
-            title: {
-                text: '2014年-2022年各类情况死亡或受伤人数统计',
-                sublink: 'https://www.gunviolencearchive.org/reports',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '{a} <br/>{b} : {c} ({d}%)'
-            },
-            legend: {
-                type: 'scroll',
-                orient: 'vertical',
-                right: 10,
-                top: 50,
-                bottom: 20,
-                data: data.legendData
-            },
-            series: [
-
-                {
-                    name: '类别',
-                    type: 'pie',
-                    radius: '55%',
-                    center: ['33%', '50%'],
-                    data: data.seriesData,
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    },
-                    colorStops: [{
-                        offset: 0, color: 'red' // 0% 处的颜色
-                    }, {
-                        offset: 1, color: 'blue' // 100% 处的颜色
-                    }],
-                    // roseType: "",
-                    // avoidLabelOverlap: true,
-
-                }
-            ]
-        };
-        function genData() {
-            const legendData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-            const seriesData = [
-                { name: 'District of Columbia', value: 7 },
-                { name: 'Maryland', value: 58 },
-                { name: 'Pennsylvania', value: 50 },
-                { name: 'Texas', value: 154 },
-                { name: 'Wisconsin', value: 29 },
-                { name: 'Virginia', value: 84 },
-                { name: 'Michigan', value: 47 },
-                { name: 'Utah', value: 14 },
-                { name: 'California', value: 79 },
-                { name: 'New York', value: 38 },
-                { name: 'Indiana', value: 51 },
-                { name: 'Arizona', value: 33 },
-                { name: 'Hawaii', value: 1 },
-                { name: 'North Carolina', value: 105 },
-                { name: 'Kentucky', value: 53 },
-                { name: 'Ohio', value: 88 },
-                { name: 'Missouri', value: 30 },
-                { name: 'Massachusetts', value: 13 },
-                { name: 'Louisiana', value: 34 },
-                { name: 'Alabama', value: 46 },
-                { name: 'Florida', value: 136 },
-                { name: 'Illinois', value: 52 },
-                { name: 'Georgia', value: 90 },
-                { name: 'Nevada', value: 31 },
-                { name: 'Mississippi', value: 23 },
-                { name: 'Nebraska', value: 12 },
-                { name: 'New Jersey', value: 9 },
-                { name: 'Oklahoma', value: 21 },
-                { name: 'South Carolina', value: 78 },
-                { name: 'Tennessee', value: 68 },
-                { name: 'Washington', value: 20 },
-                { name: 'New Hampshire', value: 1 },
-                { name: 'Minnesota', value: 30 },
-                { name: 'Kansas', value: 16 },
-                { name: 'Colorado', value: 26 },
-                { name: 'Connecticut', value: 7 },
-                { name: 'Arkansas', value: 21 },
-                { name: 'New Mexico', value: 20 },
-                { name: 'West Virginia', value: 9 },
-                { name: 'Iowa', value: 12 },
-                { name: 'Alaska', value: 4 },
-                { name: 'North Dakota', value: 3 },
-                { name: 'Delaware', value: 8 },
-                { name: 'Maine', value: 3 },
-                { name: 'Oregon', value: 8 },
-                { name: 'Wyoming', value: 2 },
-                { name: 'Montana', value: 1 },
-                { name: 'South Dakota', value: 1 }
-            ];
-            return {
-                legendData: legendData,
-                seriesData: seriesData
-            };
-        }
-        var isRoseTypeRadius = true;  // 初始设置为南丁格尔玫瑰图模式
-
-        document.getElementById('toggleButton').addEventListener('click', function () {
-            isRoseTypeRadius = !isRoseTypeRadius;  // 切换标识
-            option.series[0].roseType = isRoseTypeRadius ? 'radius' : undefined;  // 根据标识设置roseType的值
-            myChart.setOption(option);  // 使用新的配置选项重新渲染图表
-        });
-
-        var isSmallValueLegendHidden = false;  // 初始设置为显示所有图例
-
-        document.getElementById('toggleLegendButton').addEventListener('click', function () {
-            isSmallValueLegendHidden = !isSmallValueLegendHidden;  // 切换标识
-            var newLegendData = [];
-            var newSeriesData = [];
-
-            if (isSmallValueLegendHidden) {
-                // 如果数据项的 value 小于 3，则从 legendData 和 seriesData 中删除该项
-                for (var i = 0; i < data.legendData.length; i++) {
-                    if (data.seriesData[i].value >= 10) {
-                        newLegendData.push(data.legendData[i]);
-                        newSeriesData.push(data.seriesData[i]);
                     }
-                }
-            } else {
-                newLegendData = data.legendData;
-                newSeriesData = data.seriesData;
+                ]
+            };
+            function genData() {
+                const legendData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+                const seriesData = [
+                    { name: 'District of Columbia', value: 7 },
+                    { name: 'Maryland', value: 58 },
+                    { name: 'Pennsylvania', value: 50 },
+                    { name: 'Texas', value: 154 },
+                    { name: 'Wisconsin', value: 29 },
+                    { name: 'Virginia', value: 84 },
+                    { name: 'Michigan', value: 47 },
+                    { name: 'Utah', value: 14 },
+                    { name: 'California', value: 79 },
+                    { name: 'New York', value: 38 },
+                    { name: 'Indiana', value: 51 },
+                    { name: 'Arizona', value: 33 },
+                    { name: 'Hawaii', value: 1 },
+                    { name: 'North Carolina', value: 105 },
+                    { name: 'Kentucky', value: 53 },
+                    { name: 'Ohio', value: 88 },
+                    { name: 'Missouri', value: 30 },
+                    { name: 'Massachusetts', value: 13 },
+                    { name: 'Louisiana', value: 34 },
+                    { name: 'Alabama', value: 46 },
+                    { name: 'Florida', value: 136 },
+                    { name: 'Illinois', value: 52 },
+                    { name: 'Georgia', value: 90 },
+                    { name: 'Nevada', value: 31 },
+                    { name: 'Mississippi', value: 23 },
+                    { name: 'Nebraska', value: 12 },
+                    { name: 'New Jersey', value: 9 },
+                    { name: 'Oklahoma', value: 21 },
+                    { name: 'South Carolina', value: 78 },
+                    { name: 'Tennessee', value: 68 },
+                    { name: 'Washington', value: 20 },
+                    { name: 'New Hampshire', value: 1 },
+                    { name: 'Minnesota', value: 30 },
+                    { name: 'Kansas', value: 16 },
+                    { name: 'Colorado', value: 26 },
+                    { name: 'Connecticut', value: 7 },
+                    { name: 'Arkansas', value: 21 },
+                    { name: 'New Mexico', value: 20 },
+                    { name: 'West Virginia', value: 9 },
+                    { name: 'Iowa', value: 12 },
+                    { name: 'Alaska', value: 4 },
+                    { name: 'North Dakota', value: 3 },
+                    { name: 'Delaware', value: 8 },
+                    { name: 'Maine', value: 3 },
+                    { name: 'Oregon', value: 8 },
+                    { name: 'Wyoming', value: 2 },
+                    { name: 'Montana', value: 1 },
+                    { name: 'South Dakota', value: 1 }
+                ];
+                return {
+                    legendData: legendData,
+                    seriesData: seriesData
+                };
             }
+            var isRoseTypeRadius = true;  // 初始设置为南丁格尔玫瑰图模式
 
-            option.legend.data = newLegendData;
-            option.series[0].data = newSeriesData;
-            myChart.setOption(option, true);  // 使用新的配置选项重新渲染图表
-        });
+            document.getElementById('toggleButton').addEventListener('click', function () {
+                isRoseTypeRadius = !isRoseTypeRadius;  // 切换标识
+                option.series[0].roseType = isRoseTypeRadius ? 'radius' : undefined;  // 根据标识设置roseType的值
+                myChart.setOption(option);  // 使用新的配置选项重新渲染图表
+            });
+
+            var isSmallValueLegendHidden = false;  // 初始设置为显示所有图例
+
+            document.getElementById('toggleLegendButton').addEventListener('click', function () {
+                isSmallValueLegendHidden = !isSmallValueLegendHidden;  // 切换标识
+                var newLegendData = [];
+                var newSeriesData = [];
+
+                if (isSmallValueLegendHidden) {
+                    // 如果数据项的 value 小于 3，则从 legendData 和 seriesData 中删除该项
+                    for (var i = 0; i < data.legendData.length; i++) {
+                        if (data.seriesData[i].value >= 10) {
+                            newLegendData.push(data.legendData[i]);
+                            newSeriesData.push(data.seriesData[i]);
+                        }
+                    }
+                } else {
+                    newLegendData = data.legendData;
+                    newSeriesData = data.seriesData;
+                }
+
+                option.legend.data = newLegendData;
+                option.series[0].data = newSeriesData;
+                myChart.setOption(option, true);  // 使用新的配置选项重新渲染图表
+            });
 
 
-        option && myChart.setOption(option);
-    </script>
+            option && myChart.setOption(option);
+        </script>
 
 </body>
 

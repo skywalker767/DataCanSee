@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>堆叠图</title>
+    <link rel="stylesheet" href="../static/css/btn.css">
+    <link rel="stylesheet" href="../static/css/style3.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
@@ -21,184 +25,174 @@
     </style>
 </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>数据可视化</title>
-    <!-- ctrl+h即可调出查询与替换窗口 -->
-</head>
-
-
-
 <body>
-    <div id="navbar-container">
-        <!-- 导航栏 -->
-    </div>
+    <header>
+        <li class="logo" alt="logo">数据可视化</li>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="retu2.html">热力图</a></li>
+                <li><a href="index9.html">动态折线图</a></li>
+                <li><a href="index6.html">柱状图</a></li>
+                <li><a href="index3.html">折线图</a></li>
+                <li><a href="index10.html">饼图</a></li>
+                <li><a href="index8.html">堆叠图</li>
+                <li><a href="index13.html">趋势图</li>
+            </ul>
+        </nav>
+        <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
+        </head>
 
-    <script>
-        // 使用 JavaScript 加载导航栏内容
-        window.addEventListener('DOMContentLoaded', function () {
-            var navbarContainer = document.getElementById('navbar-container');
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', './navgeo.html', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    navbarContainer.innerHTML = xhr.responseText;
-                }
+
+        <div id="main" style="width: 800px; height: 400px;"></div>
+        <script>
+            var chartDom = document.getElementById('main');
+            var myChart = echarts.init(chartDom);
+            var option;
+
+            option = {
+
+                legend: {
+                    selected: {
+                        '死亡': false,
+                        '受伤': false,
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        // Use axis to trigger tooltip
+                        type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+                    }
+                },
+
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value'
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+                },
+                series: [
+                    {
+                        name: '死亡',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [12347, 13577, 15145, 15749, 14940, 15516, 19584, 21042, 20273]
+                    },
+                    {
+                        name: '受伤',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [21861, 26892, 30582, 31361, 28244, 30203, 39541, 40599, 38591]
+                    },
+                    {
+                        name: '儿童',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994]
+                    },
+                    {
+                        name: '青少年',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: data = [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176]
+                    },
+                    {
+                        name: '大规模枪支暴力',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [272, 336, 383, 348, 336, 415, 610, 690, 646]
+                    },
+                    {
+                        name: '警员被杀',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [229, 279, 309, 302, 276, 367, 404, 441, 412]
+                    },
+                    {
+                        name: '嫌疑人被击毙',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [1851, 2044, 2018, 2148, 2190, 2085, 2225, 2223, 2274]
+                    },
+                    {
+                        name: '自卫',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [1459, 1395, 1992, 2118, 1888, 1622, 1515, 1311, 1198]
+                    },
+                    {
+                        name: '无意射杀',
+                        type: 'bar',
+                        stack: 'total',
+                        label: {
+                            show: false,
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [1647, 1997, 2235, 2065, 1696, 1912, 2335, 2030, 1627]
+                    }
+                ]
             };
-            xhr.send();
-        });
-    </script>
-    <div id="main" style="width: 800px; height: 400px;"></div>
-    <script>
 
-        var chartDom = document.getElementById('main');
-        var myChart = echarts.init(chartDom);
-        var option;
-
-        option = {
-
-            legend: {
-                selected: {
-                    '死亡': false,
-                    '受伤': false,
-                }
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    // Use axis to trigger tooltip
-                    type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
-                }
-            },
-
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value'
-            },
-            yAxis: {
-                type: 'category',
-                data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
-            },
-            series: [
-                {
-                    name: '死亡',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [12347, 13577, 15145, 15749, 14940, 15516, 19584, 21042, 20273]
-                },
-                {
-                    name: '受伤',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [21861, 26892, 30582, 31361, 28244, 30203, 39541, 40599, 38591]
-                },
-                {
-                    name: '儿童',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994]
-                },
-                {
-                    name: '青少年',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: data = [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176]
-                },
-                {
-                    name: '大规模枪支暴力',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [272, 336, 383, 348, 336, 415, 610, 690, 646]
-                },
-                {
-                    name: '警员被杀',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [229, 279, 309, 302, 276, 367, 404, 441, 412]
-                },
-                {
-                    name: '嫌疑人被击毙',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [1851, 2044, 2018, 2148, 2190, 2085, 2225, 2223, 2274]
-                },
-                {
-                    name: '自卫',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [1459, 1395, 1992, 2118, 1888, 1622, 1515, 1311, 1198]
-                },
-                {
-                    name: '无意射杀',
-                    type: 'bar',
-                    stack: 'total',
-                    label: {
-                        show: false,
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: [1647, 1997, 2235, 2065, 1696, 1912, 2335, 2030, 1627]
-                }
-            ]
-        };
-
-        option && myChart.setOption(option);
-    </script>
+            option && myChart.setOption(option);
+        </script>
 
 </body>
 

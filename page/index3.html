@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>ECharts Map Example</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+  <title>折线图</title>
+  <link rel="stylesheet" href="../static/css/btn.css">
+  <link rel="stylesheet" href="../static/css/style3.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
-  <link rel="stylesheet" href="../static/css/style3background.css">
-  <link rel="stylesheet" href="../static/css/btn.css">
   <link rel="shortcut icon" href="favicon.ico" />
   <style>
     #main {
@@ -23,125 +25,123 @@
   </style>
 </head>
 
-
 <body>
-  <div id="navbar-container"></div>
+  <header>
+    <li class="logo" alt="logo">数据可视化</li>
+    <nav>
+      <ul class="nav_links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="retu2.html">热力图</a></li>
+        <li><a href="index9.html">动态折线图</a></li>
+        <li><a href="index6.html">柱状图</a></li>
+        <li><a href="index3.html">折线图</a></li>
+        <li><a href="index10.html">饼图</a></li>
+        <li><a href="index8.html">堆叠图</li>
+        <li><a href="index13.html">趋势图</li>
+      </ul>
+    </nav>
+    <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
+    </head>
 
-  <!-- 其他页面内容 -->
 
-  <script>
-    // 使用 JavaScript 加载导航栏内容
-    window.addEventListener('DOMContentLoaded', function () {
-      var navbarContainer = document.getElementById('navbar-container');
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', './navgeo.html', true);
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          navbarContainer.innerHTML = xhr.responseText;
-        }
+    <div id="main" style="width: 800px; height: 400px;"></div>
+    <script>
+      var chartDom = document.getElementById('main');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      option = {
+        title: {
+          text: '2014年-2022年儿童及青少年伤亡数量变化',
+          textStyle: {
+            fontSize: 15
+          },
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {},
+        toolbox: {
+          show: true,
+          feature: {
+            dataZoom: {
+              show: true, // 开启区域缩放
+              yAxisIndex: 'none'
+            },
+            dataView: { readOnly: true },
+            // magicType: { type: ['line', 'bar'] },
+            restore: {},
+            saveAsImage: {}
+          }
+        },
+
+
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+        },
+        yAxis: [
+          {
+            type: 'value',
+            axisLabel: {
+              color: "rgba(84, 112, 198, 1)"
+            },
+            min: 500,
+            max: 1200
+          },
+          {
+            type: 'value',
+            axisLabel: {
+              color: "rgba(145, 204, 117, 1)"
+            },
+            min: 2000,
+            max: 6000,
+
+          }
+        ],
+
+        series: [
+          {
+            name: '儿童',
+            type: 'line',
+            data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994],
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+              ]
+            },
+            markLine: {
+              data: [{ type: 'average', name: 'Avg' }],
+              symbol: ''
+            }
+          },
+
+          {
+            name: '青少年',
+            type: 'line',
+            data: [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176],
+            yAxisIndex: 1, // 指定使用索引为 1 的坐标轴
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+              ]
+            },
+            markLine: {
+              data: [
+                { type: 'average', name: 'Avg' }
+
+
+              ],
+              symbol: ''
+            }
+          }
+        ]
       };
-      xhr.send();
-    });
-  </script>
-
-  <div id="main" style="width: 800px; height: 400px;"></div>
-  <script>
-    var chartDom = document.getElementById('main');
-    var myChart = echarts.init(chartDom);
-    var option;
-
-    option = {
-      title: {
-        text: '2014年-2022年儿童及青少年伤亡数量变化',
-        textStyle: {
-          fontSize: 15
-        },
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {},
-      toolbox: {
-        show: true,
-        feature: {
-          dataZoom: {
-            show: true, // 开启区域缩放
-            yAxisIndex: 'none'
-          },
-          dataView: { readOnly: true },
-          // magicType: { type: ['line', 'bar'] },
-          restore: {},
-          saveAsImage: {}
-        }
-      },
 
 
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
-      },
-      yAxis: [
-        {
-          type: 'value',
-          axisLabel: {
-            color: "rgba(84, 112, 198, 1)"
-          },
-          min: 500,
-          max: 1200
-        },
-        {
-          type: 'value',
-          axisLabel: {
-            color: "rgba(145, 204, 117, 1)"
-          },
-          min: 2000,
-          max: 6000,
-
-        }
-      ],
-
-      series: [
-        {
-          name: '儿童',
-          type: 'line',
-          data: [582, 679, 665, 721, 663, 696, 1002, 1065, 994],
-          markPoint: {
-            data: [
-              { type: 'max', name: 'Max' },
-            ]
-          },
-          markLine: {
-            data: [{ type: 'average', name: 'Avg' }],
-            symbol: ''
-          }
-        },
-
-        {
-          name: '青少年',
-          type: 'line',
-          data: [2277, 2699, 3154, 3261, 2883, 3130, 4162, 4653, 5176],
-          yAxisIndex: 1, // 指定使用索引为 1 的坐标轴
-          markPoint: {
-            data: [
-              { type: 'max', name: 'Max' },
-            ]
-          },
-          markLine: {
-            data: [
-              { type: 'average', name: 'Avg' }
-
-
-            ],
-            symbol: ''
-          }
-        }
-      ]
-    };
-
-
-    option && myChart.setOption(option);
-  </script>
+      option && myChart.setOption(option);
+    </script>
 
 </body>
 

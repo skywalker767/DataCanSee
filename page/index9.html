@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>动态折线图</title>
+    <link rel="stylesheet" href="../static/css/btn.css">
+    <link rel="stylesheet" href="../static/css/style3.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
     <link rel="shortcut icon" href="favicon.ico" />
-
     <style>
         #main {
             width: 800px;
@@ -22,134 +25,126 @@
     </style>
 </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>数据可视化</title>
-    <!-- ctrl+h即可调出查询与替换窗口 -->
-</head>
-
-
-
 <body>
-    <div id="navbar-container">
-        <!-- 导航栏 -->
-    </div>
+    <header>
+        <li class="logo" alt="logo">数据可视化</li>
+        <nav>
+            <ul class="nav_links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="retu2.html">热力图</a></li>
+                <li><a href="index9.html">动态折线图</a></li>
+                <li><a href="index6.html">柱状图</a></li>
+                <li><a href="index3.html">折线图</a></li>
+                <li><a href="index10.html">饼图</a></li>
+                <li><a href="index8.html">堆叠图</li>
+                <li><a href="index13.html">趋势图</li>
+            </ul>
+        </nav>
+        <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
+        </head>
 
-    <script>
-        // 使用 JavaScript 加载导航栏内容
-        window.addEventListener('DOMContentLoaded', function () {
-            var navbarContainer = document.getElementById('navbar-container');
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', './navgeo.html', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    navbarContainer.innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        });
-    </script>
 
-    <div id="main" style="width: 800px; height: 400px;"></div>
-    <script>
-        var ROOT_PATH = 'https://echarts.apache.org/examples';
+        <div id="main" style="width: 800px; height: 400px;"></div>
+        <script>
 
-        var chartDom = document.getElementById('main');
-        var myChart = echarts.init(chartDom);
-        var option;
+            var ROOT_PATH = 'https://echarts.apache.org/examples';
 
-        $.get('../static/json/data.json', function (_rawData) {
-            run(_rawData);
-        });
+            var chartDom = document.getElementById('main');
+            var myChart = echarts.init(chartDom);
+            var option;
 
-        function run(_rawData) {
-
-            const countries = [
-                'California', 'Texas', 'Illinois', 'Pennsylvania', 'Florida', 'New York'
-            ];
-            const datasetWithFilters = [];
-            const seriesList = [];
-            echarts.util.each(countries, function (country) {
-                var datasetId = 'dataset_' + country;
-                datasetWithFilters.push({
-                    id: datasetId,
-                    fromDatasetId: 'dataset_raw',
-                    transform: {
-                        type: 'filter',
-                        config: {
-                            and: [
-                                { dimension: 'Year', gte: 2014 },
-                                { dimension: 'Country', '=': country }
-                            ]
-                        }
-                    }
-                });
-                seriesList.push({
-                    type: 'line',
-                    datasetId: datasetId,
-                    showSymbol: false,
-                    name: country,
-                    endLabel: {
-                        show: true,
-                        formatter: function (params) {
-                            return params.value[1] + ': ' + params.value[0];
-                        }
-                    },
-                    labelLayout: {
-                        moveOverlap: 'shiftY'
-                    },
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    encode: {
-                        x: 'Year',
-                        y: 'Count',
-                        label: ['Country', 'Count'],
-                        itemName: 'Year',
-                        tooltip: ['伤亡']
-                    }
-                });
+            $.get('../static/json/data.json', function (_rawData) {
+                run(_rawData);
             });
-            option = {
-                legend: {
-                    right: 10,
-                    top: 50,
-                    bottom: 20,
-                },
-                animationDuration: 10000,
-                dataset: [
-                    {
-                        id: 'dataset_raw',
-                        source: _rawData
+
+            function run(_rawData) {
+
+                const countries = [
+                    'California', 'Texas', 'Illinois', 'Pennsylvania', 'Florida', 'New York'
+                ];
+                const datasetWithFilters = [];
+                const seriesList = [];
+                echarts.util.each(countries, function (country) {
+                    var datasetId = 'dataset_' + country;
+                    datasetWithFilters.push({
+                        id: datasetId,
+                        fromDatasetId: 'dataset_raw',
+                        transform: {
+                            type: 'filter',
+                            config: {
+                                and: [
+                                    { dimension: 'Year', gte: 2014 },
+                                    { dimension: 'Country', '=': country }
+                                ]
+                            }
+                        }
+                    });
+                    seriesList.push({
+                        type: 'line',
+                        datasetId: datasetId,
+                        showSymbol: false,
+                        name: country,
+                        endLabel: {
+                            show: true,
+                            formatter: function (params) {
+                                return params.value[1] + ': ' + params.value[0];
+                            }
+                        },
+                        labelLayout: {
+                            moveOverlap: 'shiftY'
+                        },
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        encode: {
+                            x: 'Year',
+                            y: 'Count',
+                            label: ['Country', 'Count'],
+                            itemName: 'Year',
+                            tooltip: ['伤亡']
+                        }
+                    });
+                });
+                option = {
+                    legend: {
+                        right: 10,
+                        top: 50,
+                        bottom: 20,
                     },
-                    ...datasetWithFilters
-                ],
-                title: {
-                    text: '2014-2022年美国枪支暴力情况较为严重州的大规模枪击事件数量变化'
-                },
-                tooltip: {
-                    order: 'valueDesc',
-                    trigger: 'axis'
-                },
-                xAxis: {
-                    type: 'category',
-                    nameLocation: 'middle'
-                },
-                yAxis: {
-                    name: '事件数量'
-                },
-                grid: {
-                    right: 140
-                },
-                series: seriesList
-            };
-            myChart.setOption(option);
-        }
+                    animationDuration: 10000,
+                    dataset: [
+                        {
+                            id: 'dataset_raw',
+                            source: _rawData
+                        },
+                        ...datasetWithFilters
+                    ],
+                    title: {
+                        text: '2014-2022年美国枪支暴力情况较为严重州的大规模枪击事件数量变化'
+                    },
+                    tooltip: {
+                        order: 'valueDesc',
+                        trigger: 'axis'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        nameLocation: 'middle'
+                    },
+                    yAxis: {
+                        name: '事件数量'
+                    },
+                    grid: {
+                        right: 140
+                    },
+                    series: seriesList
+                };
+                myChart.setOption(option);
+            }
 
-        option && myChart.setOption(option);
+            option && myChart.setOption(option);
 
-    </script>
+
+        </script>
 
 </body>
 
