@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>饼图</title>
+    <title>ECharts Map Example</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
@@ -14,7 +14,7 @@
             width: 800px;
             height: 600px;
             position: absolute;
-            top: 60%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
@@ -68,6 +68,7 @@
                 data: data.legendData
             },
             series: [
+
                 {
                     name: '类别',
                     type: 'pie',
@@ -80,20 +81,69 @@
                             shadowOffsetX: 0,
                             shadowColor: 'rgba(0, 0, 0, 0.5)'
                         }
-                    }
+                    },
+                    colorStops: [{
+                        offset: 0, color: 'red' // 0% 处的颜色
+                    }, {
+                        offset: 1, color: 'blue' // 100% 处的颜色
+                    }],
+                    roseType: "radius",
+                    avoidLabelOverlap: true,
+
                 }
             ]
         };
         function genData() {
-            const legendData = ['儿童受伤或死亡人数', '青少年受伤或死亡人数', '警察殉职', '作案人被击毙', '因家庭入侵事件受伤或死亡人数', '意外事件导致的受伤或死亡人数', '其他(包括但不限于街头冲突等伤亡因素)'];
+            const legendData = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
             const seriesData = [
-                { name: '儿童受伤或死亡人数', value: 7067 },
-                { name: '青少年受伤或死亡人数', value: 31395 },
-                { name: '警察殉职', value: 3019 },
-                { name: '作案人被击毙', value: 19058 },
-                { name: '因家庭入侵事件受伤或死亡人数', value: 21420 },
-                { name: '意外事件导致的受伤或死亡人数', value: 17544 },
-                { name: '其他(包括但不限于街头冲突等伤亡因素)', value: 336585 }
+                { name: 'District of Columbia', value: 7 },
+                { name: 'Maryland', value: 58 },
+                { name: 'Pennsylvania', value: 50 },
+                { name: 'Texas', value: 154 },
+                { name: 'Wisconsin', value: 29 },
+                { name: 'Virginia', value: 84 },
+                { name: 'Michigan', value: 47 },
+                { name: 'Utah', value: 14 },
+                { name: 'California', value: 79 },
+                { name: 'New York', value: 38 },
+                { name: 'Indiana', value: 51 },
+                { name: 'Arizona', value: 33 },
+                { name: 'Hawaii', value: 1 },
+                { name: 'North Carolina', value: 105 },
+                { name: 'Kentucky', value: 53 },
+                { name: 'Ohio', value: 88 },
+                { name: 'Missouri', value: 30 },
+                { name: 'Massachusetts', value: 13 },
+                { name: 'Louisiana', value: 34 },
+                { name: 'Alabama', value: 46 },
+                { name: 'Florida', value: 136 },
+                { name: 'Illinois', value: 52 },
+                { name: 'Georgia', value: 90 },
+                { name: 'Nevada', value: 31 },
+                { name: 'Mississippi', value: 23 },
+                { name: 'Nebraska', value: 12 },
+                { name: 'New Jersey', value: 9 },
+                { name: 'Oklahoma', value: 21 },
+                { name: 'South Carolina', value: 78 },
+                { name: 'Tennessee', value: 68 },
+                { name: 'Washington', value: 20 },
+                { name: 'New Hampshire', value: 1 },
+                { name: 'Minnesota', value: 30 },
+                { name: 'Kansas', value: 16 },
+                { name: 'Colorado', value: 26 },
+                { name: 'Connecticut', value: 7 },
+                { name: 'Arkansas', value: 21 },
+                { name: 'New Mexico', value: 20 },
+                { name: 'West Virginia', value: 9 },
+                { name: 'Iowa', value: 12 },
+                { name: 'Alaska', value: 4 },
+                { name: 'North Dakota', value: 3 },
+                { name: 'Delaware', value: 8 },
+                { name: 'Maine', value: 3 },
+                { name: 'Oregon', value: 8 },
+                { name: 'Wyoming', value: 2 },
+                { name: 'Montana', value: 1 },
+                { name: 'South Dakota', value: 1 }
             ];
             return {
                 legendData: legendData,
