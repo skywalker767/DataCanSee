@@ -45,955 +45,196 @@
 
 
         <div id="main" style="width: 800px; height: 400px;"></div>
-        <div class="btn-container">
-            <button id="switchBtn" class="btn" style="position: fixed;top: 90%;">Change</button>
-        </div>
+
         <script>
-            var app = {};
             var chartDom = document.getElementById('main');
             var myChart = echarts.init(chartDom);
             var option;
-            var data = [
-                {
-                    name: '2014',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#3c8ab2' // 父节点颜色为较深蓝色
-                    },
-                    children: [
+
+            setTimeout(function () {
+                option = {
+                    dataZoom: [
                         {
-                            name: '儿童伤亡',
-                            value: 582,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#549ec7' // 数值较小，颜色较浅
-                            },
-                            children: [
-                                {
-                                    name: '582',
-                                    value: 582,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#549ec7' // 数值较小，颜色较浅
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 2277,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#6ab2dd' // 数值较小，颜色较浅
-                            },
-                            children: [
-                                {
-                                    name: '2277',
-                                    value: 2277,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#6ab2dd' // 数值较小，颜色较浅
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 229,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#80c7f3' // 数值较小，颜色较浅
-                            },
-                            children: [
-                                {
-                                    name: '229',
-                                    value: 229,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#80c7f3' // 数值较小，颜色较浅
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 1851,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '1851',
-                                    value: 1851,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '家庭入侵',
-                            value: 2476,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2476',
-                                    value: 2476,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 1647,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '1647',
-                                    value: 1647,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                                    }
-                                },
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 25146,
-                            itemStyle: {
-                                color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '25146',
-                                    value: 25146,
-                                    itemStyle: {
-                                        color: '#d9d9e9',//: '#3c8ab2' // 数值较大，颜色较深
-                                    }
-                                },
-                            ]
+                            id: 'dataZoomY',
+                            type: 'slider',
+                            yAxisIndex: [0],
+                            filterMode: 'empty'
                         }
-                    ]
-
-                },
-                {
-                    name: '2015',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#006400' // 父节点颜色为深绿色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 679,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#007700' // 数值较小，颜色较浅
-                            },
-                            children: [
-                                {
-                                    name: '679',
-                                    value: 679,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#007700' // 数值较小，颜色较浅
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 2699,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#00A000' // 数值较小，颜色较浅
-                            },
-                            children: [
-                                {
-                                    name: '2699',
-                                    value: 2699,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#00A000' // 数值较小，颜色较浅
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 279,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#00C300' // 数值较小，颜色较浅
-                            },
-                            children: [
-                                {
-                                    name: '279',
-                                    value: 279,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#00C300' // 数值较小，颜色较浅
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2044,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2044',
-                                    value: 2044,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '家庭入侵',
-                            value: 2330,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2330',
-                                    value: 2330,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 1997,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '1997',
-                                    value: 1997,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                                    }
-                                },
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 30441,
-                            itemStyle: {
-                                color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '30441',
-                                    value: 30441,
-                                    itemStyle: {
-                                        color: '#b4b5d4',//: '#006400' // 数值较大，颜色较深
-                                    }
-                                },
-                            ]
-                        }
-                    ]
-
-                },
-                {
-                    name: '2016',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#008000'
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 665,
-                            itemStyle: {
-                                color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '665',
-                                    value: 665,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 3154,
-                            itemStyle: {
-                                color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '3154',
-                                    value: 3154,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 309,
-                            children: [
-                                {
-                                    name: '309',
-                                    value: 309,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2018,
-                            itemStyle: {
-                                color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2018',
-                                    value: 2018,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '家庭入侵',
-                            value: 2566,
-                            itemStyle: {
-                                color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2566',
-                                    value: 2566,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 2235,
-                            itemStyle: {
-                                color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2235',
-                                    value: 2235,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 34780,
-                            itemStyle: {
-                                color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '34780',
-                                    value: 34780,
-                                    itemStyle: {
-                                        color: '#8f92bf',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                },
-                            ],
-                        },
-                    ]
-
-                },
-                {
-                    name: '2017',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#800080' // 紫色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 721,
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '721',
-                                    value: 721,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 3261,
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '3261',
-                                    value: 3261,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 302,
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '302',
-                                    value: 302,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            value: 2148,
-                            children: [
-                                {
-                                    name: '2148',
-                                    value: 2148,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '家庭入侵',
-                            value: 2567,
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2567',
-                                    value: 2567,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 2065,
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2065',
-                                    value: 2065,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 36046,
-                            itemStyle: {
-                                color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '36046',
-                                    value: 36046,
-                                    itemStyle: {
-                                        color: '#6a71aa',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    name: '2018',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#FFFF00' // 黄色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 663,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '663',
-                                    value: 663,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 2883,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2883',
-                                    value: 2883,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 276,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '276',
-                                    value: 276,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2190,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '2190',
-                                    value: 2190,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '家庭入侵',
-                            value: 1961,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '1961',
-                                    value: 1961,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 1696,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '1696',
-                                    value: 1696,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 33564,
-                            itemStyle: {
-                                color: '#425195',//: '#006400' // 数值较大，颜色较深
-                            },
-                            children: [
-                                {
-                                    name: '33564',
-                                    value: 33564,
-                                    itemStyle: {
-                                        color: '#425195',//: '#006400' // 数值较大，颜色较深
-                                    },
-                                }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    name: '2019',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#808080' // 灰色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 696,
-                            children: [
-                                {
-                                    name: '696',
-                                    value: 696
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 3130,
-                            children: [
-                                {
-                                    name: '3130',
-                                    value: 3130
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 367,
-                            children: [
-                                {
-                                    name: '367',
-                                    value: 367
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2085,
-                            children: [
-                                {
-                                    name: '2085',
-                                    value: 2085
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 1912,
-                            children: [
-                                {
-                                    name: '1912',
-                                    value: 1912
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 37528,
-                            children: [
-                                {
-                                    name: '37528',
-                                    value: 37528
-                                }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    name: '2020',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#FF0000' // 红色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 1002,
-                            children: [
-                                {
-                                    name: '1002',
-                                    value: 1002
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 4162,
-                            children: [
-                                {
-                                    name: '4162',
-                                    value: 4162
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 404,
-                            children: [
-                                {
-                                    name: '404',
-                                    value: 404
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2225,
-                            children: [
-                                {
-                                    name: '2225',
-                                    value: 2225
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 2335,
-                            children: [
-                                {
-                                    name: '2335',
-                                    value: 2335
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 48997,
-                            children: [
-                                {
-                                    name: '48997',
-                                    value: 48997
-                                }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    name: '2021',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#A52A2A' // 棕色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 1065,
-                            children: [
-                                {
-                                    name: '1065',
-                                    value: 1065
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 4653,
-                            children: [
-                                {
-                                    name: '4653',
-                                    value: 4653
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 441,
-                            children: [
-                                {
-                                    name: '441',
-                                    value: 441
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2223,
-                            children: [
-                                {
-                                    name: '2223',
-                                    value: 2223
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 2030,
-                            children: [
-                                {
-                                    name: '2030',
-                                    value: 2030
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 51228,
-                            children: [
-                                {
-                                    name: '51228',
-                                    value: 51228
-                                }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    name: '2022',
-                    itemStyle: {
-                        color: '#f5f5f5',//: '#00CED1' // 深天蓝色
-                    },
-                    children: [
-                        {
-                            name: '儿童伤亡',
-                            value: 994,
-                            children: [
-                                {
-                                    name: '994',
-                                    value: 994
-                                }
-                            ]
-                        },
-                        {
-                            name: '青少年伤亡',
-                            value: 5176,
-                            children: [
-                                {
-                                    name: '5176',
-                                    value: 5176
-                                }
-                            ]
-                        },
-                        {
-                            name: '警员殉职',
-                            value: 412,
-                            children: [
-                                {
-                                    name: '412',
-                                    value: 412
-                                }
-                            ]
-                        },
-                        {
-                            name: '嫌疑人被击毙',
-                            value: 2274,
-                            children: [
-                                {
-                                    name: '2274',
-                                    value: 2274
-                                }
-                            ]
-                        },
-                        {
-                            name: '意外伤亡',
-                            value: 1627,
-                            children: [
-                                {
-                                    name: '1627',
-                                    value: 1627
-                                }
-                            ]
-                        },
-                        {
-                            name: '其他因素',
-                            value: 48375,
-                            children: [
-                                {
-                                    name: '48375',
-                                    value: 48375
-                                }
-                            ]
-                        },
                     ],
-                },
-            ];
-            option = {
-                tooltip: {},
-                series: {
-                    type: 'sunburst',
-                    data: data,
-                    radius: [0, '95%'],
-                    sort: undefined,
-                    emphasis: {
-                        focus: 'ancestor'
+                    legend: {},
+                    tooltip: {
+                        trigger: 'axis',
+                        showContent: false
                     },
-                    levels: [
-                        {},
+                    dataset: {
+                        source: [
+                            ['State', '1月', '2月', '3月', '4月', '5月'],
+                            ['Texas', 358.0, 327.0, 323.0, 373.0, 329.0],
+                            ['Illinois', 279.0, 278.0, 263.0, 332.0, 426.0],
+                            ['California', 273.0, 282.0, 298.0, 337.0, 335.0],
+                            ['Pennsylvania', 251.0, 224.0, 219.0, 232.0, 267.0],
+                            ['Ohio', 201.0, 206.0, 191.0, 225.0, 299.0],
+                            ['Florida', 232.0, 205.0, 183.0, 198.0, 229.0],
+                            ['Georgia', 151.0, 194.0, 169.0, 199.0, 250.0],
+                            ['Louisiana', 192.0, 194.0, 169.0, 175.0, 203.0],
+                            ['North Carolina', 186.0, 163.0, 147.0, 184.0, 165.0],
+                            ['New York', 136.0, 132.0, 147.0, 145.0, 185.0],
+                            ['Tennessee', 119.0, 154.0, 154.0, 130.0, 171.0],
+                            ['Maryland', 100.0, 124.0, 143.0, 170.0, 155.0],
+                            ['Alabama', 116.0, 111.0, 145.0, 134.0, 133.0],
+                            ['Virginia', 122.0, 123.0, 112.0, 147.0, 115.0],
+                            ['Michigan', 101.0, 111.0, 97.0, 145.0, 143.0],
+                            ['Indiana', 108.0, 119.0, 94.0, 96.0, 129.0],
+                            ['Missouri', 88.0, 85.0, 96.0, 99.0, 149.0],
+                            ['South Carolina', 90.0, 86.0, 91.0, 127.0, 103.0],
+                            ['Wisconsin', 104.0, 78.0, 99.0, 82.0, 122.0],
+                            ['Mississippi', 82.0, 83.0, 84.0, 68.0, 118.0],
+                            ['District of Columbia', 71.0, 88.0, 86.0, 91.0, 92.0],
+                            ['Kentucky', 73.0, 69.0, 59.0, 76.0, 91.0],
+                            ['Arizona', 70.0, 53.0, 68.0, 63.0, 70.0],
+                            ['Colorado', 45.0, 60.0, 69.0, 59.0, 62.0],
+                            ['New Jersey', 60.0, 43.0, 49.0, 64.0, 70.0],
+                            ['Washington', 53.0, 38.0, 55.0, 55.0, 65.0],
+                            ['Minnesota', 60.0, 53.0, 44.0, 56.0, 49.0],
+                            ['Oklahoma', 31.0, 37.0, 45.0, 63.0, 32.0],
+                            ['Arkansas', 38.0, 39.0, 35.0, 23.0, 50.0],
+                            ['Connecticut', 34.0, 32.0, 34.0, 35.0, 32.0],
+                            ['Massachusetts', 37.0, 27.0, 15.0, 37.0, 34.0],
+                            ['New Mexico', 29.0, 21.0, 28.0, 23.0, 46.0],
+                            ['Nevada', 30.0, 27.0, 20.0, 20.0, 28.0],
+                            ['Oregon', 21.0, 17.0, 26.0, 24.0, 29.0],
+                            ['Kansas', 31.0, 22.0, 12.0, 23.0, 22.0],
+                            ['Iowa', 22.0, 24.0, 27.0, 12.0, 16.0],
+                            ['Delaware', 10.0, 22.0, 8.0, 23.0, 15.0],
+                            ['Nebraska', 13.0, 6.0, 12.0, 14.0, 16.0],
+                            ['West Virginia', 10.0, 12.0, 7.0, 16.0, 13.0],
+                            ['Utah', 20.0, 5.0, 10.0, 8.0, 9.0],
+                            ['Rhode Island', 5.0, 6.0, 6.0, 8.0, 10.0],
+                            ['Montana', 10.0, 6.0, 11.0, 4.0, 3.0],
+                            ['Alaska', 7.0, 6.0, 8.0, 4.0, 9.0],
+                            ['Maine', 4.0, 5.0, 3.0, 9.0, 4.0],
+                            ['Hawaii', 4.0, 1.0, 6.0, 8.0, 5.0],
+                            ['Idaho', 1.0, 5.0, 3.0, 3.0, 6.0],
+                            ['North Dakota', 4.0, 4.0, 4.0, 2.0, 2.0],
+                            ['Vermont', 1.0, 2.0, 2.0, 4.0, 3.0],
+                            ['New Hampshire', 1.0, 1.0, 0.0, 1.0, 8.0],
+                            ['South Dakota', 2.0, 2.0, 2.0, 1.0, 3.0],
+                            ['Wyoming', 4.0, 1.0, 0, 2.0, 2.0]
+                        ]
+                    },
+                    xAxis: { type: 'category' },
+                    yAxis: { gridIndex: 0 },
+                    grid: { top: '55%' },
+                    series: [
+
                         {
-                            r0: '15%',
-                            r: '35%',
-                            itemStyle: {
-                                borderWidth: 2
-                            },
-                            label: {
-                                rotate: 'tangential',
-                            }
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+
                         },
                         {
-                            r0: '35%',
-                            r: '70%',
-                            label: {
-                                align: 'right',
-                                show: false,
-                            }
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
                         },
                         {
-                            r0: '70%',
-                            r: '70%',
-                            label: {
-                                position: 'outside',
-                                padding: 3,
-                                silent: false,
-                                show: false,
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'line',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            emphasis: { focus: 'series' }
+                        },
+                        {
+                            type: 'pie',
+                            id: 'pie',
+                            radius: '30%',
+                            center: ['50%', '25%'],
+                            emphasis: {
+                                focus: 'self'
                             },
-                            itemStyle: {
-                                borderWidth: 3
+                            label: {
+                                formatter: '{c}: {@2012} ({d}%)'
+                            },
+                            encode: {
+                                itemName: 'product',
+                                value: '2012',
+                                tooltip: '2012'
                             }
                         }
                     ]
-                }
-            };
-            myChart.setOption(option);
-
-            myChart.on('click', function (params) {
-                if (params.depth === 1) { // 如果点击的是一年的节点
-                    myChart.dispatchAction({
-                        type: 'downplay', // 先将所有节点置为低亮状态，隐藏标签
-                        seriesIndex: 0,
-                    });
-                    myChart.dispatchAction({
-                        type: 'highlight', // 再将当前节点及其子节点置为高亮状态，显示标签
-                        seriesIndex: 0,
-                        dataIndex: params.dataIndex,
-                    });
-                } else { // 如果点击的不是一年的节点
-                    myChart.dispatchAction({
-                        type: 'downplay', // 将所有节点置为低亮状态，隐藏标签
-                        seriesIndex: 0,
-                    });
-                }
+                };
+                myChart.on('updateAxisPointer', function (event) {
+                    const xAxisInfo = event.axesInfo[0];
+                    if (xAxisInfo) {
+                        const dimension = xAxisInfo.value + 1;
+                        myChart.setOption({
+                            series: {
+                                id: 'pie',
+                                label: {
+                                    formatter: '{c}: {@[' + dimension + ']} ({d}%)'
+                                },
+                                encode: {
+                                    value: dimension,
+                                    tooltip: dimension
+                                }
+                            }
+                        });
+                    }
+                });
+                myChart.setOption(option);
             });
 
+            option && myChart.setOption(option);
 
         </script>
 

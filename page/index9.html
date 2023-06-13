@@ -8,7 +8,6 @@
     <title>动态折线图</title>
     <link rel="stylesheet" href="../static/css/btn.css">
     <link rel="stylesheet" href="../static/css/style3.css">
-
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
@@ -46,8 +45,8 @@
 
 
         <div id="main" style="width: 800px; height: 400px;"></div>
-        <script>
 
+        <script>
             var ROOT_PATH = 'https://echarts.apache.org/examples';
 
             var chartDom = document.getElementById('main');
@@ -75,10 +74,9 @@
                             config: {
                                 and: [
                                     { dimension: 'Year', gte: 2014 },
-                                    { dimension: 'Country', '=': country }
+                                    { dimension: 'State', '=': country }
                                 ]
                             }
-
                         }
                     });
                     seriesList.push({
@@ -101,7 +99,7 @@
                         encode: {
                             x: 'Year',
                             y: 'Count',
-                            label: ['Country', 'Count'],
+                            label: ['State', 'Count'],
                             itemName: 'Year',
                             tooltip: ['伤亡']
                         }
@@ -131,7 +129,6 @@
                     xAxis: {
                         type: 'category',
                         nameLocation: 'middle'
-
                     },
                     yAxis: {
                         name: '事件数量'
@@ -145,7 +142,6 @@
             }
 
             option && myChart.setOption(option);
-
 
         </script>
 
