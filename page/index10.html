@@ -47,6 +47,7 @@
     <div class="btn-container">
         <button id="toggleButton" class="btn" style="position: fixed;top: 90%;">Change</button>
     </div>
+    <button id="toggleMinAngleButton">切换最小角度限制</button>
     <script>
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
@@ -159,6 +160,14 @@
         document.getElementById('toggleButton').addEventListener('click', function () {
             isRoseTypeRadius = !isRoseTypeRadius;  // 切换标识
             option.series[0].roseType = isRoseTypeRadius ? 'radius' : undefined;  // 根据标识设置roseType的值
+            myChart.setOption(option);  // 使用新的配置选项重新渲染图表
+        });
+
+        var isMinAngleSet = false;  // 初始设置为无最小角度限制
+
+        document.getElementById('toggleMinAngleButton').addEventListener('click', function () {
+            isMinAngleSet = !isMinAngleSet;  // 切换标识
+            option.series[0].minAngle = isMinAngleSet ? 8 : 0;  // 根据标识设置minAngle的值
             myChart.setOption(option);  // 使用新的配置选项重新渲染图表
         });
 
