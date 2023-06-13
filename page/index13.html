@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta charset="utf-8">
     <title>动态折线图</title>
-    <link rel="stylesheet" href="../static/css/btn.css">
-    <link rel="stylesheet" href="../static/css/style3.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-array"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-geo"></script>
     <link rel="shortcut icon" href="favicon.ico" />
+
     <style>
         #main {
             width: 800px;
@@ -25,128 +22,129 @@
     </style>
 </head>
 
+
 <body>
-    <header>
-        <li class="logo" alt="logo">数据可视化</li>
-        <nav>
-            <ul class="nav_links">
-                <li><a href="../index.html">首页</a></li>
-                <li><a href="retu2.html">热力图</a></li>
-                <li><a href="index9.html">动态折线图</a></li>
-                <li><a href="index6.html">柱状图</a></li>
-                <li><a href="index3.html">折线图</a></li>
-                <li><a href="index10.html">饼图</a></li>
-                <li><a href="index8.html">堆叠图</li>
-                <li><a href="index13.html">趋势图</li>
-            </ul>
-        </nav>
-        <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
-        </head>
+    <div id="navbar-container">
+        <!-- 导航栏 -->
+    </div>
 
+    <script>
+        // 使用 JavaScript 加载导航栏内容
+        window.addEventListener('DOMContentLoaded', function () {
+            var navbarContainer = document.getElementById('navbar-container');
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './navgeo.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    navbarContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        });
+    </script>
 
-        <div id="main" style="width: 800px; height: 400px;"></div>
-        <div class="btn-container">
-            <button id="switchBtn" class="btn" style="position: fixed;top: 90%;">Change</button>
-        </div>
-        <script>
-            var chartDom = document.getElementById('main');
-            var myChart = echarts.init(chartDom);
-            var option;
+    <div id="main" style="width: 800px; height: 400px;"></div>
+    <script>
 
-            setTimeout(function () {
-                option = {
-                    dataZoom: [
-                        {
-                            id: 'dataZoomY',
-                            type: 'slider',
-                            yAxisIndex: [0],
-                            filterMode: 'empty'
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        setTimeout(function () {
+            option = {
+                dataZoom: [
+                    {
+                        id: 'dataZoomY',
+                        type: 'slider',
+                        yAxisIndex: [0],
+                        filterMode: 'empty'
+                    }
+                ],
+                legend: {},
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false
+                },
+                dataset: {
+                    source: [
+                        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                        ['Milk Tea', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
+                        ['Matcha Latte', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+                        ['Cheese Cocoa', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
+                        ['Walnut Brownie', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
+                    ]
+                },
+                xAxis: { type: 'category' },
+                yAxis: { gridIndex: 0 },
+                grid: { top: '55%' },
+                series: [
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: { focus: 'series' }
+                    },
+                    {
+                        type: 'pie',
+                        id: 'pie',
+                        radius: '30%',
+                        center: ['50%', '25%'],
+                        emphasis: {
+                            focus: 'self'
+                        },
+                        label: {
+                            formatter: '{b}: {@2012} ({d}%)'
+                        },
+                        encode: {
+                            itemName: 'product',
+                            value: '2012',
+                            tooltip: '2012'
                         }
-                    ],
-                    legend: {},
-                    tooltip: {
-                        trigger: 'axis',
-                        showContent: false
-                    },
-                    dataset: {
-                        source: [
-                            ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-                            ['Milk Tea', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
-                            ['Matcha Latte', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
-                            ['Cheese Cocoa', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
-                            ['Walnut Brownie', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
-                        ]
-                    },
-                    xAxis: { type: 'category' },
-                    yAxis: { gridIndex: 0 },
-                    grid: { top: '55%' },
-                    series: [
-                        {
-                            type: 'line',
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            emphasis: { focus: 'series' }
-                        },
-                        {
-                            type: 'line',
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            emphasis: { focus: 'series' }
-                        },
-                        {
-                            type: 'line',
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            emphasis: { focus: 'series' }
-                        },
-                        {
-                            type: 'line',
-                            smooth: true,
-                            seriesLayoutBy: 'row',
-                            emphasis: { focus: 'series' }
-                        },
-                        {
-                            type: 'pie',
+                    }
+                ]
+            };
+            myChart.on('updateAxisPointer', function (event) {
+                const xAxisInfo = event.axesInfo[0];
+                if (xAxisInfo) {
+                    const dimension = xAxisInfo.value + 1;
+                    myChart.setOption({
+                        series: {
                             id: 'pie',
-                            radius: '30%',
-                            center: ['50%', '25%'],
-                            emphasis: {
-                                focus: 'self'
-                            },
                             label: {
-                                formatter: '{b}: {@2012} ({d}%)'
+                                formatter: '{b}: {@[' + dimension + ']} ({d}%)'
                             },
                             encode: {
-                                itemName: 'product',
-                                value: '2012',
-                                tooltip: '2012'
+                                value: dimension,
+                                tooltip: dimension
                             }
                         }
-                    ]
-                };
-                myChart.on('updateAxisPointer', function (event) {
-                    const xAxisInfo = event.axesInfo[0];
-                    if (xAxisInfo) {
-                        const dimension = xAxisInfo.value + 1;
-                        myChart.setOption({
-                            series: {
-                                id: 'pie',
-                                label: {
-                                    formatter: '{b}: {@[' + dimension + ']} ({d}%)'
-                                },
-                                encode: {
-                                    value: dimension,
-                                    tooltip: dimension
-                                }
-                            }
-                        });
-                    }
-                });
-                myChart.setOption(option);
+                    });
+                }
             });
+            myChart.setOption(option);
+        });
 
-            option && myChart.setOption(option);
-        </script>
+        option && myChart.setOption(option);
+
+    </script>
 
 </body>
 
