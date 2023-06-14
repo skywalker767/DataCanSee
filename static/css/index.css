@@ -261,7 +261,7 @@ body .shell-main-lbt .button {
 body .shell-main-lbt .button .button-left,
 body .shell-main-lbt .button .button-right {
   font-size: 50px;
-  background-color: rgba(160, 193, 255, 0.7);
+  background-color: rgba(205, 205, 205, 0.7);
   padding: 0 20px;
   cursor: pointer;
   line-height: 500px;
