@@ -38,10 +38,6 @@ header {
     padding: 0px 20px;
 }
 
-.nav_links li:nth-child(3) {
-    text-decoration: underline;
-}
-
 .nav_links li a {
     transition: all 0.3s ease 0s;
 }

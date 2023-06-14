@@ -177,7 +177,7 @@
             var newSeriesData = [];
 
             if (isSmallValueLegendHidden) {
-                // 如果数据项的 value 小于 3，则从 legendData 和 seriesData 中删除该项
+                // 如果数据项的 value 小于 10，则从 legendData 和 seriesData 中删除该项
                 for (var i = 0; i < data.legendData.length; i++) {
                     if (data.seriesData[i].value >= 10) {
                         newLegendData.push(data.legendData[i]);
