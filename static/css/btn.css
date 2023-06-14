@@ -117,50 +117,7 @@
    }
    
 
-   .share-button {
-    height: 1em;
-    width: 3em;
-    border: none;
-    border-radius: 40px;
-    background-color: #fff;
-  }
-  
-  .share-button span {
-    z-index: 1;
-    display: inline-block;
-    background-color: black;
-    height: 3em;
-    width: 11.5em;
-    border-radius: 25px;
-    color: #fff;
-    line-height: 55px;
-    font-size: 18px;
-    letter-spacing: 3px;
-    transition: all 0.5s;
-  }
-  
-  .share-button .container {
-    z-index: -1;
-    width: 0;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    transform: translateY(-50px);
-    transition: all 0.4s;
-  }
-  
-  .share-button .container svg {
-    padding: 0 10px;
-  }
-  
-  .share-button:hover span {
-    width: 0;
-  }
-  
-  .share-button:hover .container {
-    z-index: 2;
-    width: 100%;
-  }
+
   
 
   
