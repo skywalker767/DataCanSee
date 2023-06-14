@@ -41,18 +41,19 @@
                 <li><a href="index13.html">趋势图</li>
             </ul>
         </nav>
-        <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button>Code</button></a>
+        <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button
+                class="special2-button">Code</button></a>
 
     </header>
 
 
     <div id="main" style="width: 800px; height: 400px;"></div>
     <div class="btn-container">
-        <button id="toggleButton" class="btn" style="position: fixed;top: 90%;">Change</button>
+        <button id="toggleButton" class="btn" style="position: fixed;top: 90%;left: 60%;">Change</button>
     </div>
-
-    <button id="toggleLegendButton">切换图例显示</button>
-
+    <div class="btn-container">
+        <button id="toggleLegendButton" style=" position: fixed;top: 90%;left: 40%;">DEL</button>
+    </div>
     <script>
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
