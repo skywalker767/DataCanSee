@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>动态折线图</title>
     <link rel="stylesheet" href="../static/css/btn.css">
     <link rel="stylesheet" href="../static/css/style3.css">
@@ -53,90 +54,68 @@
         var myChart = echarts.init(chartDom);
         var option;
 
-        var stateColors = {
-            "California": "#f44336",
-            "Arizona": "#e91e63",
-            "New York": "#9c27b0",
-            "Ohio": "#673ab7",
-            "Tennessee": "#3f51b5",
-            "Virginia": "#2196f3",
-            "Illinois": "#03a9f4",
-            "Missouri": "#00bcd4",
-            "Wisconsin": "#009688",
-            "Mississippi": "#4caf50",
-            "Pennsylvania": "#8bc34a",
-            "Colorado": "#cddc39",
-            "Florida": "#ffeb3b",
-            "Texas": "#ffc107",
-            "Nebraska": "#ff9800",
-            "Michigan": "#ff5722",
-            "Georgia": "#795548",
-            "South Carolina": "#9e9e9e",
-            "North Carolina": "#607d8b",
-            "Kentucky": "#673ab7",
-            "Iowa": "#3f51b5",
-            "Arkansas": "#2196f3",
-            "Maryland": "#00bcd4",
-            "Louisiana": "#009688",
-            "Indiana": "#4caf50",
-            "Minnesota": "#8bc34a",
-            "Washington": "#cddc39",
-            "Rhode Island": "#ffeb3b",
-            "Alabama": "#ffc107",
-            "New Jersey": "#ff9800",
-            "Connecticut": "#ff5722",
-            "District of Columbia": "#795548",
-            "Kansas": "#9e9e9e",
-            "Oregon": "#607d8b",
-            "Hawaii": "#f44336",
-            "Utah": "#e91e63",
-            "Oklahoma": "#9c27b0",
-            "West Virginia": "#03a9f4",
-            "Nevada": "#00bcd4",
-            "New Hampshire": "#009688",
-            "North Dakota": "#4caf50",
-            "Maine": "#8bc34a",
-            "Idaho": "#cddc39",
-            "Alaska": "#ffeb3b",
-            "Montana": "#ffc107",
-            "Vermont": "#ff9800",
-            "Massachusetts": "#ff5722",
-            "Delaware": "#795548",
-            "South Dakota": "#9e9e9e",
-            "Wyoming": "#607d8b",
-            "New Mexico": "#673ab7"
+        const updateFrequency = 500;
+
+
+        let stateColors = {
+            // Your color mapping goes here, for example:
+            "California": "#1f77b4",
+            "Arizona": "#aec7e8",
+            "New York": "#ff7f0e",
+            "Ohio": "#ffbb78",
+            "Tennessee": "#2ca02c",
+            "Virginia": "#98df8a",
+            "Illinois": "#d62728",
+            "Missouri": "#ff9896",
+            "Wisconsin": "#9467bd",
+            "Mississippi": "#c5b0d5",
+            "Pennsylvania": "#8c564b",
+            "Colorado": "#c49c94",
+            "Florida": "#e377c2",
+            "Texas": "#f7b6d2",
+            "Nebraska": "#7f7f7f",
+            "Michigan": "#c7c7c7",
+            "Georgia": "#bcbd22",
+            "South Carolina": "#dbdb8d",
+            "North Carolina": "#17becf",
+            "Kentucky": "#9edae5",
+            "Iowa": "#7b241c",
+            "Arkansas": "#782b90",
+            "Maryland": "#1c2833",
+            "Louisiana": "#5144ad",
+            "Indiana": "#eb984e",
+            "Minnesota": "#f4f6f7",
+            "Washington": "#f1948a",
+            "Rhode Island": "#1abc9c",
+            "Alabama": "#7d3c98",
+            "New Jersey": "#196f3d",
+            "Connecticut": "#6c3483",
+            "District of Columbia": "#e74c3c",
+            "Kansas": "#9b59b6",
+            "Oregon": "#3498db",
+            "Hawaii": "#2ecc71",
+            "Utah": "#95a5a6",
+            "Oklahoma": "#f1c40f",
+            "West Virginia": "#d35400",
+            "Nevada": "#e67e22",
+            "New Hampshire": "#e84393",
+            "North Dakota": "#dcdde1",
+            "Maine": "#2d3436",
+            "Idaho": "#273c75",
+            "Alaska": "#192a56",
+            "Montana": "#40739e",
+            "Vermont": "#487eb0",
+            "Massachusetts": "#273c75",
+            "Delaware": "#7f8fa6",
+            "South Dakota": "#353b48",
+            "Wyoming": "#718093",
+            "New Mexico": "#2f3640"
         };
 
-
         $.getJSON('../static/json/data2.json', function (data) {
-            let updatedData = [];
-
-            for (let i = 0; i < data.length; i++) {
-                const currentDate = data[i].date;
-                const currentDeaths = data[i];
-
-                let updatedDeaths = {
-                    date: currentDate,
-                };
-
-                if (i === 0) {
-                    Object.keys(currentDeaths).forEach((key) => {
-                        if (key !== "date") {
-                            updatedDeaths[key] = 0;
-                        }
-                    });
-                } else {
-                    const prevDeaths = updatedData[i - 1];
-                    Object.keys(currentDeaths).forEach((key) => {
-                        if (key !== "date") {
-                            updatedDeaths[key] = prevDeaths[key] + currentDeaths[key];
-                        }
-                    });
-                }
-
-                updatedData.push(updatedDeaths);
-            }
-
+            let dates = data.map(item => item.date);
+            let startDateIndex = 0;
+            let startDate = dates[startDateIndex];
             option = {
                 grid: {
                     top: 10,
@@ -145,10 +124,10 @@
                     right: 80
                 },
                 xAxis: {
-                    max: 'dataMax'
+                    // max: 2000
                 },
                 dataset: {
-                    source: Object.entries(updatedData[0])
+                    source: Object.entries(data.find(item => item.date === startDate))
                         .filter(([key, value]) => key !== 'date')
                         .map(([key, value]) => [value, key])
                 },
@@ -169,15 +148,22 @@
                                 return stateColors[param.value[1]];
                             }
                         },
+                        encode: {
+                            x: 0,
+                            y: 1
+                        },
                         label: {
                             show: true,
                             position: 'right',
                             valueAnimation: true,
-                            fontFamily: 'monospace'
+                            fontFamily: 'monospace',
+                            animationDuration: updateFrequency,
+                            animationEasing: 'linear'
                         }
                     }
                 ],
-                animationDurationUpdate: 2000,
+
+                animationDurationUpdate: updateFrequency,
                 animationEasingUpdate: 'linear',
                 graphic: {
                     elements: [
@@ -186,7 +172,7 @@
                             right: 160,
                             bottom: 60,
                             style: {
-                                text: updatedData[0].date,
+                                text: startDate,
                                 font: 'bolder 80px monospace',
                                 fill: 'rgba(100, 100, 100, 0.25)'
                             },
@@ -198,27 +184,37 @@
 
             myChart.setOption(option);
 
-            for (let i = 0; i < updatedData.length - 1; i++) {
+            // 在获取数据的回调函数中添加以下代码
+
+            let previousData = null; // 保存上一次的数据
+
+
+            for (let i = startDateIndex; i < dates.length - 1; ++i) {
                 (function (i) {
                     setTimeout(function () {
-                        updateDate(updatedData[i + 1].date);
-                    }, i * 2000);
+                        let currentDate = dates[i + 1];
+                        let currentData = data.find(item => item.date === currentDate);
+
+                        // 比较当前数据与上一次的数据，只有在数据发生变化时才更新图表
+                        if (JSON.stringify(currentData) !== JSON.stringify(previousData)) {
+                            updateDate(currentDate, currentData);
+                            previousData = currentData;
+                        }
+                    }, (i - startDateIndex) * updateFrequency);
                 })(i);
             }
 
-            function updateDate(date) {
-                let rawData = updatedData.find((item) => item.date === date);
-                let source = Object.entries(rawData)
-                    .filter(([key, value]) => key !== "date")
-                    .map(([key, value]) => [value, key]);
+            function updateDate(date, rawData) {
+                let source = Object.entries(rawData).filter(([key, value]) => key !== 'date').map(([key, value]) => [value, key]);
                 option.series[0].data = source;
                 option.graphic.elements[0].style.text = date;
                 myChart.setOption(option);
             }
 
         });
-
     </script>
+
+
 </body>
 
 </html>
