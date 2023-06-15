@@ -205,11 +205,16 @@
             }
 
             function updateDate(date, rawData) {
-                let source = Object.entries(rawData).filter(([key, value]) => key !== 'date').map(([key, value]) => [value, key]);
+                let source = Object.entries(rawData)
+                    .filter(([key, value]) => key !== 'date')
+                    .map(([key, value]) => [value, key]);
+                // sort the data based on the value
+                source.sort((a, b) => b[0] - a[0]);
                 option.series[0].data = source;
                 option.graphic.elements[0].style.text = date;
                 myChart.setOption(option);
             }
+
 
         });
     </script>
