@@ -57,8 +57,13 @@
 
             legend: {
                 selected: {
-                    '死亡': false,
-                    '受伤': false,
+                    '意外事件导致伤亡':false,
+                    '正当防卫导致的伤亡':false,
+                    '嫌疑人被击毙':false,
+                    '警员殉职':false,
+                    '大规模枪支暴力案次数':false,
+                    '青少年伤亡':false,
+                    '儿童伤亡':false,
                 }
             },
             tooltip: {
@@ -84,7 +89,7 @@
             },
             series: [
                 {
-                    name: '死亡',
+                    name: '死亡人数',
                     type: 'bar',
                     stack: 'total',
                     label: {
@@ -96,7 +101,7 @@
                     data: [12347, 13577, 15145, 15749, 14940, 15516, 19584, 21042, 20273]
                 },
                 {
-                    name: '受伤',
+                    name: '受伤人数',
                     type: 'bar',
                     stack: 'total',
                     label: {
