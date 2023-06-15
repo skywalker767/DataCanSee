@@ -54,8 +54,6 @@
         var myChart = echarts.init(chartDom);
         var option;
 
-        const updateFrequency = 2000;
-
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
             let color = '#';
@@ -65,18 +63,35 @@
             return color;
         }
 
-        let stateColors = {};
-
         $.getJSON('../static/json/data2.json', function (data) {
-            Object.keys(data[0]).forEach(state => {
-                if (state !== 'date') {
-                    stateColors[state] = getRandomColor();
-                }
-            });
+            let updatedData = [];
 
-            let dates = data.map(item => item.date);
-            let startDateIndex = 0;
-            let startDate = dates[startDateIndex];
+            for (let i = 0; i < data.length; i++) {
+                const currentDate = data[i].date;
+                const currentDeaths = data[i];
+
+                let updatedDeaths = {
+                    date: currentDate,
+                };
+
+                if (i === 0) {
+                    Object.keys(currentDeaths).forEach((key) => {
+                        if (key !== "date") {
+                            updatedDeaths[key] = 0;
+                        }
+                    });
+                } else {
+                    const prevDeaths = updatedData[i - 1];
+                    Object.keys(currentDeaths).forEach((key) => {
+                        if (key !== "date") {
+                            updatedDeaths[key] = prevDeaths[key] + currentDeaths[key];
+                        }
+                    });
+                }
+
+                updatedData.push(updatedDeaths);
+            }
+
             option = {
                 grid: {
                     top: 10,
@@ -88,7 +103,7 @@
                     max: 'dataMax'
                 },
                 dataset: {
-                    source: Object.entries(data.find(item => item.date === startDate))
+                    source: Object.entries(updatedData[0])
                         .filter(([key, value]) => key !== 'date')
                         .map(([key, value]) => [value, key])
                 },
@@ -106,12 +121,8 @@
                         type: 'bar',
                         itemStyle: {
                             color: function (param) {
-                                return stateColors[param.value[1]];
+                                return getRandomColor();
                             }
-                        },
-                        encode: {
-                            x: 0,
-                            y: 1
                         },
                         label: {
                             show: true,
@@ -121,7 +132,7 @@
                         }
                     }
                 ],
-                animationDurationUpdate: updateFrequency,
+                animationDurationUpdate: 2000,
                 animationEasingUpdate: 'linear',
                 graphic: {
                     elements: [
@@ -130,7 +141,7 @@
                             right: 160,
                             bottom: 60,
                             style: {
-                                text: startDate,
+                                text: updatedData[0].date,
                                 font: 'bolder 80px monospace',
                                 fill: 'rgba(100, 100, 100, 0.25)'
                             },
@@ -142,17 +153,19 @@
 
             myChart.setOption(option);
 
-            for (let i = startDateIndex; i < dates.length - 1; ++i) {
+            for (let i = 0; i < updatedData.length - 1; i++) {
                 (function (i) {
                     setTimeout(function () {
-                        updateDate(dates[i + 1]);
-                    }, (i - startDateIndex) * updateFrequency);
+                        updateDate(updatedData[i + 1].date);
+                    }, i * 2000);
                 })(i);
             }
 
             function updateDate(date) {
-                let rawData = data.find(item => item.date === date);
-                let source = Object.entries(rawData).filter(([key, value]) => key !== 'date').map(([key, value]) => [value, key]);
+                let rawData = updatedData.find((item) => item.date === date);
+                let source = Object.entries(rawData)
+                    .filter(([key, value]) => key !== "date")
+                    .map(([key, value]) => [value, key]);
                 option.series[0].data = source;
                 option.graphic.elements[0].style.text = date;
                 myChart.setOption(option);
