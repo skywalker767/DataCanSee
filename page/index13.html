@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>动态折线图</title>
     <link rel="stylesheet" href="../static/css/btn.css">
     <link rel="stylesheet" href="../static/css/style3.css">
@@ -54,14 +53,60 @@
         var myChart = echarts.init(chartDom);
         var option;
 
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+        var stateColors = {
+            "California": "#f44336",
+            "Arizona": "#e91e63",
+            "New York": "#9c27b0",
+            "Ohio": "#673ab7",
+            "Tennessee": "#3f51b5",
+            "Virginia": "#2196f3",
+            "Illinois": "#03a9f4",
+            "Missouri": "#00bcd4",
+            "Wisconsin": "#009688",
+            "Mississippi": "#4caf50",
+            "Pennsylvania": "#8bc34a",
+            "Colorado": "#cddc39",
+            "Florida": "#ffeb3b",
+            "Texas": "#ffc107",
+            "Nebraska": "#ff9800",
+            "Michigan": "#ff5722",
+            "Georgia": "#795548",
+            "South Carolina": "#9e9e9e",
+            "North Carolina": "#607d8b",
+            "Kentucky": "#673ab7",
+            "Iowa": "#3f51b5",
+            "Arkansas": "#2196f3",
+            "Maryland": "#00bcd4",
+            "Louisiana": "#009688",
+            "Indiana": "#4caf50",
+            "Minnesota": "#8bc34a",
+            "Washington": "#cddc39",
+            "Rhode Island": "#ffeb3b",
+            "Alabama": "#ffc107",
+            "New Jersey": "#ff9800",
+            "Connecticut": "#ff5722",
+            "District of Columbia": "#795548",
+            "Kansas": "#9e9e9e",
+            "Oregon": "#607d8b",
+            "Hawaii": "#f44336",
+            "Utah": "#e91e63",
+            "Oklahoma": "#9c27b0",
+            "West Virginia": "#03a9f4",
+            "Nevada": "#00bcd4",
+            "New Hampshire": "#009688",
+            "North Dakota": "#4caf50",
+            "Maine": "#8bc34a",
+            "Idaho": "#cddc39",
+            "Alaska": "#ffeb3b",
+            "Montana": "#ffc107",
+            "Vermont": "#ff9800",
+            "Massachusetts": "#ff5722",
+            "Delaware": "#795548",
+            "South Dakota": "#9e9e9e",
+            "Wyoming": "#607d8b",
+            "New Mexico": "#673ab7"
+        };
+
 
         $.getJSON('../static/json/data2.json', function (data) {
             let updatedData = [];
@@ -121,7 +166,7 @@
                         type: 'bar',
                         itemStyle: {
                             color: function (param) {
-                                return getRandomColor();
+                                return stateColors[param.value[1]];
                             }
                         },
                         label: {
@@ -170,10 +215,10 @@
                 option.graphic.elements[0].style.text = date;
                 myChart.setOption(option);
             }
+
         });
+
     </script>
-
-
 </body>
 
 </html>
