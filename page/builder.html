@@ -25,7 +25,6 @@
         .navbar-container h2 {
             text-align: center;
             margin-bottom: 20px;
-            /* Adjust this value to increase or decrease the space */
         }
 
         .navbar {
@@ -34,9 +33,17 @@
             gap: 10px;
         }
 
+        .img-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
         .img-container img {
-            width: 150px;
-            height: 150px;
+            width: 75%;
+            height: 75%;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -47,7 +54,6 @@
         }
 
         .img-container p {
-            text-align: center;
             margin-top: 10px;
         }
 
@@ -59,7 +65,7 @@
 
 <body>
     <header>
-        <li class="logo" alt="logo"><a href="../index.html">数据可视化</a></li>
+        <div class="logo" alt="logo"><a href="../index.html">数据可视化</a></div>
         <nav>
             <ul class="nav_links">
                 <li><a href="builder.html">首页</a></li>
@@ -68,8 +74,8 @@
                 <li><a href="index6.html">多柱状图</a></li>
                 <li><a href="index3.html">双折线图</a></li>
                 <li><a href="index10.html">饼图</a></li>
-                <li><a href="index8.html">堆叠图</li>
-                <li><a href="index13.html">动态柱状图</li>
+                <li><a href="index8.html">堆叠图</a></li>
+                <li><a href="index13.html">动态柱状图</a></li>
             </ul>
         </nav>
         <a href="https://github.com/skywalker767/skywalker767.github.io" class="cta"><button
@@ -88,39 +94,34 @@
             </div>
             <div class="img-container">
                 <a href="#"><img
-                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                        src="https://echarts.apache.org/zh/images/builder/component/markPoint.svg?_v_=20200710_1"
                         alt="Image 2"></a>
                 <p>动态折线图</p>
             </div>
             <div class="img-container">
-                <a href="#"><img
-                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                <a href="#"><img src="https://echarts.apache.org/zh/images/builder/chart/bar.svg?_v_=20200710_1"
                         alt="Image 3"></a>
                 <p>多重柱状图</p>
             </div>
             <div class="img-container">
-                <a href="#"><img
-                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                <a href="#"><img src="https://echarts.apache.org/zh/images/builder/chart/line.svg?_v_=20200710_1"
                         alt="Image 4"></a>
-                <p>图片4</p>
+                <p>双折线图</p>
             </div>
             <div class="img-container">
-                <a href="#"><img
-                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                <a href="#"><img src="https://echarts.apache.org/zh/images/builder/chart/pie.svg?_v_=20200710_1"
                         alt="Image 5"></a>
-                <p>图片5</p>
+                <p>饼图</p>
             </div>
             <div class="img-container">
-                <a href="#"><img
-                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                <a href="#"><img src="https://echarts.apache.org/zh/images/builder/chart/bar.svg?_v_=20200710_1"
                         alt="Image 6"></a>
-                <p>图片6</p>
+                <p>堆叠图</p>
             </div>
             <div class="img-container">
-                <a href="#"><img
-                        src="https://echarts.apache.org/zh/images/builder/component/markArea.svg?_v_=20200710_1"
+                <a href="#"><img src="https://echarts.apache.org/zh/images/builder/chart/bar.svg?_v_=20200710_1"
                         alt="Image 7"></a>
-                <p>图片7</p>
+                <p>动态柱状图</p>
             </div>
         </div>
     </div>
