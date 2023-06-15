@@ -86,19 +86,20 @@
     font-size: 15px;
     font-weight: 100;
     left: 50%;
-    top: 39%;
+    top: 50%;
     letter-spacing: 3px;
     text-align: center;
     transform: translate(-50%,-50%);
     color: black;
-    text-decoration: underline;  /* 添加下划线 */
+    /* text-decoration: underline;  添加下划线 */
     transition: all 2s ease;
    }
-   
+/*    
    .special-button:hover span {
     color: white;
-    text-decoration: none;  /* 鼠标放上去后去除下划线 */
-   }
+    text-decoration: none;  /* 鼠标放上去后去除下划线 
+   } 
+   */
    
    .special-button:before {
     content: '';

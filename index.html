@@ -5,187 +5,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据可视化</title>
-    <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="stylesheet" href="./static/css/all.css">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/btn.css">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+
 </head>
 
 <body>
-    <div class="shell">
-        <div class="shell-top">
-            <div class="word1">
-                <h2>美国枪支暴力数据可视化</h2>
-            </div>
-            <div class="word2">
-                <h2>计算机2006 朱胜豪、王莹昊</h2>
-            </div>
-            <!-- <img src="./image/car1.jpeg"></img> -->
-            <video src="./image/1.mp4" loop autoplay muted></video>
+    <div class="container">
+        <div class="arrow l" onclick="prev()">
+            <img src="image/l.png" alt="">
         </div>
-        <div class=" shell-main">
-            <div class="shell-main-lbt">
-                <ui class="images">
-                    <li class="img">
-                        <div class="shell-main-lbt-word">
-                            <h2>枪支暴力的严重性</h2><br />
-                            <span>美国每年都有数十万人受到枪支暴力的影响。这种现象严重影响了人们的生活和社区的安全，需要我们共同的努力来改变。</span>
-                        </div>
-                    </li>
-                    <li class="img">
-                        <div class="shell-main-lbt-word">
-                            <h2>时刻警惕枪支暴力</h2><br />
-                            <span>枪支暴力并不仅仅是大规模枪击事件，它也包括自杀、家庭暴力和街头犯罪。我们需要始终保持警惕，教育大众正确对待和使用枪支。</span>
-                        </div>
-                    </li>
-                    <li class="img">
-                        <div class="shell-main-lbt-word">
-                            <h2>我们可以共同解决这个问题</h2><br />
-                            <span>通过倡导更严格的枪支控制法律，教育公众理解枪支暴力的影响，以及提供更多心理健康资源，我们可以共同减少枪支暴力，让社会变得更加和平。</span>
-                        </div>
-                    </li>
-
-                </ui>
-                <ui class="min-images">
-                    <li class="min"></li>
-                    <li class="min"></li>
-                    <li class="min"></li>
-                </ui>
-                <div class="button">
-                    <div class="button-left">
-                        < </div>
-                            <div class="button-right">></div>
-                    </div>
-                </div>
-                <div class="shell-main-header">
-                    <div class="shell-main-header-left">
-                        <div class="shell-main-header-left-top">
-                            <h2>和平</h2>
-                            <span>是每个人的权利<br />是每个社区的力量</span>
-                        </div>
-                        <div class="shell-main-header-left-bottom">
-                            <span
-                                style="color: rgb(100, 100, 100);">欢迎来到我们的社区，这里倡导和平，反对枪支暴力。我们相信，通过教育和倡导，我们可以减少枪支暴力，创造一个安全、和谐的社会。<br />我们也欢迎各界人士，商业组织，媒体广告和公益活动与我们一起推动这项运动。</span><br /><br />
-                            <span style="font-family: font;">Welcome to our community, where we advocate peace and
-                                oppose gun violence. We believe that through education and advocacy, we can reduce gun
-                                violence and create a safe, harmonious society.<br />We also welcome individuals,
-                                businesses, media advertisements and public welfare activities to join us in promoting
-                                this campaign.</span>
-                        </div>
-                        <div class="shell-main-header-left-footer">
-                            <p>-------ChatGPT 4.0</p>
-                        </div>
-                    </div>
-                    <div class="shell-main-header-right"></div>
-                </div>
-
-                <a href="./page/builder.html">
-                    <button class="special-button">
-                        <span>VIEW NOW</span>
-                    </button>
+        <div class="slide slide-1">
+            <div class="caption">
+                <h3>美国枪支暴力数据统计</h3>
+                <p>计算机2006 朱胜豪、王莹昊 </p>
+                <!-- <videos src="../datecansee/image/1.mp4"></videos> -->
+            </div>
+        </div>
+        <div class="slide slide-2">
+            <class class="caption">
+                <h3>数据来源</h3>
+                <a href="https://www.gunviolencearchive.org/">
+                    <p>https://www.gunviolencearchive.org/</p>
                 </a>
-                <div class="shell-main-footer">
-                    <span>计算机2006 朱胜豪、王莹昊</span>
-                </div>
+        </div>
+        <div class="slide slide-3">
+            <div class="caption">
+                <h3>项目地址</h3>
+                <a href="https://github.com/skywalker767/skywalker767.github.io">
+                    <p>https://github.com/skywalker767/skywalker767.github.io</p>
+                </a>
             </div>
         </div>
+        <div class="slide slide-3">
+            <div class="caption">
+                <a href="page/builder.html">
+                    <h3>Go</h3>
+                </a>
+            </div>
+        </div>
+        <div class="arrow r" onclick="next()">
+            <img src="image/r.png" alt="">
+        </div>
+    </div>
+    <script>
+        let slide = document.querySelectorAll('.slide');
+        var current = 0;
 
+        function cls() {
+            for (let i = 0; i < slide.length; i++) {
+                slide[i].style.display = 'none';
+            }
+        }
+
+        function next() {
+            cls();
+            if (current === slide.length - 1) current = -1
+            current++;
+
+            slide[current].style.display = 'block';
+            slide[current].style.opacity = 0.4;
+
+            var x = 0.4;
+            var intX = setInterval(function () {
+                x += 0.1;
+                slide[current].style.opacity = x;
+                if (x >= 1) {
+                    clearInterval(intX);
+                    x = 0.4;
+                }
+            }, 100)
+        }
+
+        function prev() {
+            cls();
+            if (current === 0) current = slide.length
+            current--;
+
+            slide[current].style.display = 'block';
+            slide[current].style.opacity = 0.4;
+
+            var x = 0.4;
+            var intX = setInterval(function () {
+                x += 0.1;
+                slide[current].style.opacity = x;
+                if (x >= 1) {
+                    clearInterval(intX);
+                    x = 0.4;
+                }
+            }, 100)
+        }
+
+        function start() {
+            cls();
+            slide[current].style.display = 'block';
+        }
+
+        start();
+
+    </script>
 </body>
-<!-- 引入jquery -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
-<script>
-    window.addEventListener('scroll', function () {
-        let top = window.scrollY
-        if (top != 0) {
-            $('.shell-top').css('top', '-100vh')
-            $('.shell-main').css('top', '0')
-            $('.shell-main-lbt-word').css('transform', 'translateY(0px)')
-            $('.shell-main-lbt-word').css('backdrop-filter', 'blur(5px)')
-            $('.shell-main-lbt-word h2').css('transform', 'translate(0px)')
-            $('.shell-main-lbt-word span').css('transform', 'translate(0px)')
-
-        } else {
-            $('.shell-top').css('top', '0px')
-            $('.shell-main').css('top', '100vh')
-            $('.shell-main-lbt-word').css('transform', 'translateY(400px)')
-            $('.shell-main-lbt-word').css('backdrop-filter', 'blur(0px)')
-            $('.shell-main-lbt-word h2').css('transform', 'translate(520px)')
-            $('.shell-main-lbt-word span').css('transform', 'translate(-620px)')
-        }
-        if (top > 650) {
-            $('.shell-main-header-left-top').css('opacity', '1')
-            $('.shell-main-header-left-top').css('transform', 'translateY(0px)')
-            $('.shell-main-header-left-bottom').css('opacity', '1')
-            $('.shell-main-header-left-bottom').css('transform', 'translateY(0px)')
-            $('.shell-main-header-left-footer').css('opacity', '1')
-            $('.shell-main-header-left-footer').css('transform', 'translateY(0px)')
-        } else {
-            $('.shell-main-header-left-top').css('opacity', '0')
-            $('.shell-main-header-left-top').css('transform', 'translateY(400px)')
-            $('.shell-main-header-left-bottom').css('opacity', '0')
-            $('.shell-main-header-left-bottom').css('transform', 'translateY(400px)')
-            $('.shell-main-header-left-footer').css('opacity', '0')
-            $('.shell-main-header-left-footer').css('transform', 'translateY(400px)')
-        }
-    })
-    let left = document.querySelector(".button-left")
-    let right = document.querySelector(".button-right")
-    let min = document.querySelectorAll(".min")
-    let images = document.querySelector(".images")
-    let index = 0
-    let time
-    function position() {
-        images.style.left = (index * -100) + "%"
-    }
-    function add() {
-        if (index >= min.length - 1) {
-            index = 0
-        } else {
-            index++
-        }
-    }
-    function desc() {
-        if (index < 1) {
-            index = min.length - 1
-        } else {
-            index--
-        }
-    }
-
-    function timer() {
-        time = setInterval(() => {
-            index++
-            desc()
-            add()
-            position()
-        }, 34000)
-    }
-
-    left.addEventListener("click", () => {
-        desc()
-        position()
-        clearInterval(time)
-        timer()
-    })
-    // 右边的按钮和左边也是差不多
-    right.addEventListener("click", () => {
-        add()
-        position()
-        clearInterval(time)
-        timer()
-    })
-
-    for (let i = 0; i < min.length; i++) {
-        min[i].addEventListener("click", () => {
-            index = i
-            position()
-            clearInterval(time)
-            timer()
-        })
-    }
-
-    timer()
-</script>
 
 </html>
