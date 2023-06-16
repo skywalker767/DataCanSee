@@ -22,6 +22,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        .title {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            font-size: 21px;
+            opacity: 0.6;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
@@ -45,7 +54,7 @@
                 class="special2-button">Code</button></a>
 
     </header>
-
+    <h1 class="title">美国近九年大规模枪支暴力事件各州发生次数统计</h1>
     <div id="main" style="width: 1000px; height: 500px;"></div>
     <script>
 
@@ -472,7 +481,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data: legendData
+                data: legendData,
             },
             dataZoom: [
                 {

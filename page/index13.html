@@ -22,6 +22,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        .title {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            font-size: 21px;
+            opacity: 0.6;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
@@ -46,7 +55,7 @@
 
     </header>
 
-
+    <!-- <h1 class="title">2023年1月1日至今美国各个州枪支暴力案件发生次数</h1> -->
     <div id="main" style="width: 1000px; height: 500px;"></div>
 
     <script>
@@ -124,7 +133,7 @@
                     right: 80
                 },
                 xAxis: {
-                    // max: 2000
+                    max: 2000
                 },
                 dataset: {
                     source: Object.entries(data.find(item => item.date === startDate))
